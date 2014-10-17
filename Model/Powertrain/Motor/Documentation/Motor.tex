@@ -1,0 +1,65 @@
+\documentclass[]{article}
+\usepackage{gensymb}
+
+\begin{document}
+
+\title{Title}
+\author{Author}
+\date{Today}
+\maketitle
+
+\section{Block diagram}
+soon
+
+\section{Inputs and outputs}
+	\subsection{Inputs}
+	\begin{tabular}{ l | l | l  }
+		Input					&	Symbol		&	Unit		\\	\hline
+		Reactance current		&	$I_q$		&	A		\\
+		Reluctance current		&	$I_d$		&	A		\\
+		Coolant inlet temperature	&	$T_{in}$		&	\degree C	\\
+		Coolant mass flow rate	&	$\dot{m}_{in}$	&	$\frac{kg}{sec}$	 
+	\end{tabular}
+	
+	\subsection{Outputs}
+	\begin{tabular}{ l | l | l  }
+		Output					&	Symbol		&	Unit		\\	\hline
+		Motor torque				&	$\tau$		&	N m		\\
+		Motor back-emf			&	$E_m$		&	V		\\
+		Motor temperature			&	$T_{m}$		&	\degree C	\\
+		Coolant outlet temperature	&	$T_{out}$		&	\degree C	
+	\end{tabular}
+	
+\section{Background, rationale, modeling strategy}
+	\subsection{Torque model}
+		The motor is modeled using an empirical torque mapping, which assumes that the torque produced by the motor is a function of the input currents $I_d$ and $I_q$, as well as the motor efficiency:
+	
+		\begin{equation}
+			\tau = f(I_d, I_q) * \eta
+		\end{equation}
+	
+		The motor torque mapping $f(I_d, I_q)$ is determined empirically, and represented in the model as an interpolated 2D lookup table.
+	
+		The lookup table approach allows for motor physical behavior, such as magnetic saturation and saliency, to be represented without calculating them directly.
+	\subsection{Efficiency model}
+		The motor efficiency is defined as the ratio between the output mechanical power and the input electrical power:
+		
+		\begin{equation}
+			\eta = \frac{P_m}{P_e} = \frac{V_{app} I_{rms} ??}{\tau \omega}
+		\end{equation}
+		
+		where $V_{app}$ is the applied voltage (line-to-line or phase?), $I_{rms}$ is the motor current (same) and $\omega$ is the motor speed.
+		
+		The motor efficiency is determined experimentally and represented as a lookup table:
+		
+		\begin{equation}
+			\eta = g(I_{rms}, \omega ?, ...? )
+		\end{equation}
+
+\section{Parameters}
+
+
+
+\section{Assumptions}
+
+\end{document}
