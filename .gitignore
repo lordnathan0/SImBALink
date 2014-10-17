@@ -1,3 +1,5 @@
 *.aux
 *.log
 *.synctex.gz
+*.synctex
+TSWLatexianTemp*
