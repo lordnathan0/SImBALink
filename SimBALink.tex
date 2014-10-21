@@ -40,32 +40,37 @@ F_b = \mu_b w_t \beta
 \subparagraph{Tire}
 
 \begin{gather}
-\kappa_t = 
+\notag \textbf{Rolling Resistance} \\
+K_t = 
 \left\{
   \begin{array}{lr}
     0.0085 + \frac{0.18}{p_t} + \frac{1.59*10^{-6}}{p_t} & : v_{kph} \le 165 (km/h)\\
     \frac{0.18}{p_t} + \frac{2.91*10^{-6}}{p_t} & : v_{kph} > 165 (km/h)
   \end{array}
 \right. \\
-\tau_t = \tau_g - \frac{F_{w,long}}{r_t} - \frac{F_b}{r_b} - \kappa_t F_{w,n} v_{kph}^2 \\
-F_{max} = m_{t,gnd} F_{w,n} \\
+\notag \textbf{Wheel Slip} \\
+\kappa = \frac{v - \omega_t r_t}{v} \\
+\mu_{t,gnd} = D_{\kappa}\sin(C_{\kappa} \arctan[B_{\kappa}\kappa - E_{\kappa}(B_{\kappa}\kappa - \arctan B_{\kappa}\kappa)]) \\
+\notag \textbf{Load and Torque} \\
+\tau_t = \tau_g - \frac{F_{w,long}}{r_t} - \frac{F_b}{r_b} - K_t F_{w,n} v_{kph}^2 \\
+\notag \textbf{Traction Limiting} \\
+F_{max} = \mu_{t,gnd} F_{w,n} \\
 F = \tau r_t \\
 F_t =
 \left\{
   \begin{array}{lr}
-	F & : -F_{max} \le F \ge F_{max} \\
-	F_{max} & : -F_{max} < F or F > F_{max}
+	F & : -F_{max} \le F \le F_{max} \\
+	F_{max} & : -F_{max} > F > F_{max}
   \end{array}
-\right. \\
-\lambda = \frac{v - \omega_t r_t}{v}
+\right. 
 \end{gather}
 
-The piece-wise function associated with $F_t$ is an attempt to follow the curve below.
+The tire coefficient ($\mu_{t,gnd}$) is modeled using the "Magic Formula" as shown below. Where $D_{\kappa}$ is the maximum tire coefficient of the tire.
 
  \begin{figure}[H]
   \centering
-  \includegraphics[scale=1]{wheel_slip}
-  \caption{Force Coefficient Curve}
+  \includegraphics[scale=1]{magic_formula}
+  \caption{Magic Formula }
 \end{figure}
 
 \subparagraph{Wheel Forces}
@@ -88,10 +93,10 @@ F_{c,n} = mg\cos(\theta_r (d)) \\
 \subparagraph{Environment}
 
 \begin{gather}
-given: alt(d) \\
-\theta_r  = \frac{d}{dd} alt(d) \\
-T_amb(d) = T_0 - L alt(d) \\
-P(d) = P_0 \left( 1 - \frac{L alt(d)}{T_0} \right)^{\frac{gM}{RL}}\\
+given: h(d) \\
+\theta_r  = \frac{d}{dd} h(d) \\
+T_amb(d) = T_0 - L h(d) \\
+P(d) = P_0 \left( 1 - \frac{L h(d)}{T_0} \right)^{\frac{gM}{RL}}\\
 \rho(d) = \frac{PM}{1000RT}  
 \end{gather}
 
