@@ -3,8 +3,38 @@
 
 \subsection{Brakes}
 
-\begin{gather}
-F_b = \mu_b w_t \beta
-\end{gather}
+\subsection{Inputs and outputs}
+	\subsubsection{Inputs}
+	\begin{tabular}{ l | l | l  }
+		Input					&	Symbol		&	Unit		\\	\hline
+		Brake Command			& 	$beta$ 		&	\% \\
+		Wheel Speed				&	$\omega_t$	&	rad/s
+	\end{tabular}
+	
+	\subsubsection{Outputs}
+	\begin{tabular}{ l | l | l  }
+		Output					&	Symbol		&	Unit		\\	\hline
+		Brake Force on Tire		&	$F_b$		&	N
+	\end{tabular}
+
+\subsubsection{Background, rationale, modeling strategy}
+The brake is modeled as a friction force 
+		\begin{gather}
+			F_b = \mu_b \omega_t \beta
+		\end{gather}
+
+\subsubsection{Variables}
+	\begin{tabular}{ l | l | l  }
+		Output					&	Symbol		&	Unit		\\	\hline
+		Brake Coefficenct of Friction		&	$\mu_b$		&	 $\frac{N}{rad/s}$ 
+	\end{tabular}
+\subsubsection{Parameters}
+No tuning parameters
+
+
+\subsubsection{Assumptions}
+\begin{itemize}
+  \item Throttle percentage to friction force is linear
+\end{itemize}
 
 \end{document}
