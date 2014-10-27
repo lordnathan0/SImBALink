@@ -3,3 +3,5 @@
 *.synctex.gz
 *.synctex
 TSWLatexianTemp*
+Docs/*.pdf
+!Docs/Bib/*.pdf
