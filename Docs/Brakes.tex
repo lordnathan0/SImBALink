@@ -18,19 +18,17 @@
 	\end{tabular}
 
 \subsubsection{Background, rationale, modeling strategy}
-The brake is modeled as a friction force 
+The brake is modeled as a friction force and a constant that converts $\beta$ to a force.
 		\begin{gather}
-			F_b = \mu_b \omega_t \beta
+			F_b = \mu_b \omega_t \beta k_b
 		\end{gather}
 
 \subsubsection{Variables}
 	\begin{tabular}{ l | l | l  }
-		Output					&	Symbol		&	Unit		\\	\hline
-		Brake Coefficenct of Friction		&	$\mu_b$		&	 $\frac{N}{rad/s}$ 
+		Var									&	Symbol		&	Unit		\\	\hline
+		Brake Coefficenct of Friction		&	$\mu_b$		&	 $\frac{N}{rad/s}$ \\
+		Force Constant						&	$k_b$		&	 $\frac{N}{\%}$
 	\end{tabular}
-\subsubsection{Parameters}
-No tuning parameters
-
 
 \subsubsection{Assumptions}
 \begin{itemize}
