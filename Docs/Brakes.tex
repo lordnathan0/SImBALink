@@ -1,0 +1,38 @@
+\documentclass[../SimBALink.tex]{subfiles}
+\begin{document}
+
+\subsection{Brakes}
+
+\subsection{Inputs and outputs}
+	\subsubsection{Inputs}
+	\begin{tabular}{ l | l | l  }
+		Input					&	Symbol		&	Unit		\\	\hline
+		Brake Command			& 	$beta$ 		&	\% \\
+		Wheel Speed				&	$\omega_t$	&	rad/s
+	\end{tabular}
+	
+	\subsubsection{Outputs}
+	\begin{tabular}{ l | l | l  }
+		Output					&	Symbol		&	Unit		\\	\hline
+		Brake Force on Tire		&	$F_b$		&	N
+	\end{tabular}
+
+\subsubsection{Background, rationale, modeling strategy}
+The brake is modeled as a friction force and a constant that converts $\beta$ to a force.
+		\begin{gather}
+			F_b = \mu_b \omega_t \beta k_b
+		\end{gather}
+
+\subsubsection{Variables}
+	\begin{tabular}{ l | l | l  }
+		Var									&	Symbol		&	Unit		\\	\hline
+		Brake Coefficenct of Friction		&	$\mu_b$		&	 $\frac{N}{rad/s}$ \\
+		Force Constant						&	$k_b$		&	 $\frac{N}{\%}$
+	\end{tabular}
+
+\subsubsection{Assumptions}
+\begin{itemize}
+  \item Brake percentage to friction force is linear
+\end{itemize}
+
+\end{document}

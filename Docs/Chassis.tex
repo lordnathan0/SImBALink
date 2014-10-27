@@ -1,0 +1,68 @@
+\documentclass[../SimBALink.tex]{subfiles}
+\begin{document}
+
+\subsection{Chassis} This system models the chassis of the motorcycle including the velocity of the motorcycle and forces on the road.
+
+\subsection{Inputs and outputs}
+	\subsubsection{Inputs}
+	\begin{tabular}{ l | l | l  }
+		Input					&	Symbol		&	Unit		\\	\hline
+		Tire Force				& 	$F_t$ 		&	N \\		
+		Air Density 			&	$\rho$		& $kg/m^3$ \\
+		Road Gradient			&	$\theta_r$  & rad
+	\end{tabular}
+	
+	\subsubsection{Outputs}
+	\begin{tabular}{ l | l | l  }
+		Output					&	Symbol		&	Unit		\\	\hline
+		Vehicle Velocity		&	$v$			&	m/s \\
+		Distance Traveled		&	$d$			&	m \\
+		Lean Angle 				&	$\theta_l$	&   rad	\\
+	\end{tabular}
+
+\subsubsection{Background, rationale, modeling strategy}
+The Chassis is modeled point mass with drag.
+\begin{gather}
+		F_a = \frac{1}{2} \rho C_dAv^2 \\
+		F_{c,long}  = F_a + gm\sin(\theta_r)  \\
+		F_{c,n} = mg\cos(\theta_r) \\
+		\dot{v} = mF_t \\
+		\dot{d} = v
+\end{gather}
+
+\subsubsection{States}
+	\begin{tabular}{ l | l | l  }
+		State					&	Symbol		&	Unit		\\	\hline
+		Distance				&	$d$			& 	m \\
+		Velocity 				&	$v$			&	m/s \\
+	\end{tabular}
+\subsubsection{Variables}
+	\begin{tabular}{ l | l | l  }
+		Output					&	Symbol		&	Unit		\\	\hline
+		Gravity 				&	$g$			&	$m/s^2$ \\
+		Mass of Motorcycle		&	$m$			&  $kg$	
+						
+	\end{tabular}
+\subsubsection{Parameters}
+	\begin{tabular}{ l | l | l  }
+		Param.					&	Symbol		&	Unit		\\	\hline
+		Drag Area				&	$C_dA$		&	 $\frac{N}{rad/s}$ 			
+	\end{tabular}
+\subsubsection{Look Up table}
+$\theta_l(d)$ \\
+	\begin{tabular}{ l | l | l | l }
+		Type				& Description		&	Symbol		&	Unit		\\	\hline
+		Input 				& Distance Traveled	&	$d$  		& 	m		\\
+		Output 				& Lean Angle		&	n/a			&	rad
+	\end{tabular} \\
+
+\subsubsection{Assumptions}
+\begin{itemize}
+    \item The full weight of the motorcycle is always on the correct tire for breaking or acceleration. That is not a bad assumption because maximum braking or acceleration will happen at wheelie or stoppie when there is only one tire on the ground.
+    \item Lean angle does not affect Aero Drag
+    \item No lateral forces
+\end{itemize}
+
+
+
+\end{document}
