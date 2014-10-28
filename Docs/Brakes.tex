@@ -22,10 +22,18 @@ The brake is modeled as a friction force and a constant that converts $\beta$ to
 		\begin{gather}
 			F_b = \mu_b \omega_t \beta k_b
 		\end{gather}
-
+		
 \subsubsection{Variables}
 	\begin{tabular}{ l | l | l  }
-		Var									&	Symbol		&	Unit		\\	\hline
+		Param									&	Symbol		&	Unit		\\	\hline
+		Brake Force on Tire		&	$F_b$		&	N \\
+		Brake Command			& 	$beta$ 		&	\% \\
+		Wheel Speed				&	$\omega_t$	&	rad/s
+	\end{tabular}
+
+\subsubsection{Parameters}
+	\begin{tabular}{ l | l | l  }
+		Param									&	Symbol		&	Unit		\\	\hline
 		Brake Coefficenct of Friction		&	$\mu_b$		&	 $\frac{N}{rad/s}$ \\
 		Force Constant						&	$k_b$		&	 $\frac{N}{\%}$
 	\end{tabular}
