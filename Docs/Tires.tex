@@ -34,18 +34,20 @@ K_t =
   \end{array}
 \right. \\
 \notag \textbf{Wheel Slip} \\
-\kappa = \frac{v - \omega_t r_t(\theta_l)}{v} \\
+\kappa = -\frac{v - \omega_t r_t(\theta_l)}{v} \\
 \mu_{t,gnd} = D_{\kappa}\sin(C_{\kappa} \arctan[B_{\kappa}\kappa - E_{\kappa}(B_{\kappa}\kappa - \arctan B_{\kappa}\kappa)]) \\
 \notag \textbf{Load and Torque} \\
 \tau_t = \tau_g - F_{w,long}r_t(\theta_l) - F_br_b - K_t F_{w,n} v_{kph}^2 \\
 \notag \textbf{Traction Limiting} \\
 F_{max} = \mu_{t,gnd} F_{w,n} \\
-F = \tau r_t((\theta_l) \\
+F = \tau_t r_t(\theta_l) \\
 F_t =
 \left\{
   \begin{array}{lr}
-	F & : -F_{max} \le F \le F_{max} \\
-	F_{max} & : -F_{max} > F > F_{max}
+	F 	& : F \le F_{max} \\
+	-F 	& : -F_{max} \le F \\
+	F_{max} & : F > F_{max} \\
+	-F_{max} & : -F_{max} > F
   \end{array}
 \right. 
 \end{gather}
@@ -61,13 +63,19 @@ The tire coefficient ($\mu_{t,gnd}$) is modeled using the "Magic Formula" as sho
 \subsubsection{Variables}
 	\begin{tabular}{ l | l | l  }
 		Var					&	Symbol		&	Unit		\\	\hline
-		Tire Pressure		&	$p_t$		&	 $bar$ \\
-		Brake Caliper Radius &	$r_b$		&	m \\
+		Tire Torque			&	$\tau_t$	&	 Nm \\
+		Rolling Constant	&	$K_t$		& 	n/a \\
+		Wheel Slip			&	$\kappa$ 	&	ratio \\
+		Tire coefficient 	& $\mu_{t,gnd}$ &	n/a \\
+		Max Force 			&	$F_{max}$	&	N \\
+		Force 				&	$F$	&	N \\
 	\end{tabular}
 \subsubsection{Parameters}
 	\begin{tabular}{ l | l | l  }
 		Param.					&	Symbol		&	Unit		\\	\hline
-		 Magic Formula\\		&	$A_{\kappa},B_{\kappa},C_{\kappa},D_{\kappa}$		&	 n/a \\
+		Tire Pressure		&	$p_t$		&	 $bar$ \\
+		Brake Caliper Radius &	$r_b$		&	m \\		
+		\textbf{Magic Formula}\\		&	$A_{\kappa},B_{\kappa},C_{\kappa},D_{\kappa}$		&	 n/a \\
 	\end{tabular}
 	
 \subsubsection{Function}

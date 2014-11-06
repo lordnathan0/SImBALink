@@ -3,6 +3,8 @@
 
 \subsection{Chassis} This system models the chassis of the motorcycle including the velocity of the motorcycle and forces on the road.
 
+The forces have a notation of Longitudinal (long), Normal(n) , and Lateral (lat). Longitudinal being the direction the motorcycle is moving. Lateral at a 2D right angle to Longitudinal direction. Normal is orthogonal to others. 
+
 \subsection{Inputs and outputs}
 	\subsubsection{Inputs}
 	\begin{tabular}{ l | l | l  }
@@ -18,6 +20,7 @@
 		Vehicle Velocity		&	$v$			&	m/s \\
 		Distance Traveled		&	$d$			&	m \\
 		Lean Angle 				&	$\theta_l$	&   rad	\\
+		Chassis Forces			&	$F_c$		&	N[3]
 	\end{tabular}
 
 \subsubsection{Background, rationale, modeling strategy}
@@ -27,7 +30,8 @@ The Chassis is modeled point mass with drag.
 		F_{c,long}  = F_a + gm\sin(\theta_r)  \\
 		F_{c,n} = mg\cos(\theta_r) \\
 		\dot{v} = mF_t \\
-		\dot{d} = v
+		\dot{d} = v \\
+		\theta_l = \theta_l(d)
 \end{gather}
 
 \subsubsection{States}
