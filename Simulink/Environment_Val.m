@@ -1,4 +1,5 @@
 load Environment_Val.mat
+load Environment.mat
 close all
 
 %must have data:
@@ -27,3 +28,18 @@ legend('data','model')
 title('Validate Density')
 xlabel('Altitude')
 ylabel('Density')
+
+%grad test
+t = [1:1:max(altx)];
+Timespan = max(t);
+UT = [t',t'];
+opt = simset('ReturnWorkspaceOutputs', 'off');
+[T,X,Y] = sim('Environment',Timespan,opt, UT);
+sub.reload;
+
+figure()
+plotyy(Y(:,5),Y(:,6),Y(:,5),Y(:,1));
+title('Validate Road Grad')
+
+
+
