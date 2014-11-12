@@ -24,3 +24,6 @@ hold all
 plot(alt,rho)
 plot(Y(:,6),Y(:,4))
 legend('data','model')
+title('Validate Density')
+xlabel('Altitude')
+ylabel('Density')
