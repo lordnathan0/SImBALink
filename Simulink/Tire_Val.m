@@ -2,6 +2,7 @@ close all
 sub = get_param('Tires','ModelWorkspace');
 sub.reload;
 
+%%
 
 Ct = evalin(sub,'Ct');
 
