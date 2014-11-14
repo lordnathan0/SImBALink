@@ -1,0 +1,28 @@
+params for motor model
+
+Inputs
+Vd				D-axis applied voltage (V)
+Vq				Q-axis applied voltage (V)
+omega			motor speed ( rad/sec )
+
+Parameters
+Ld 				D-axis motor inductance (H)
+Lq				Q-axis motor inductance (H)
+R				Motor phase resistance (R)
+phi_m			Motor flux linkage
+
+Id_0			Motor D-axis current initial condition (A)
+Iq_0			Motor Q-axis current initial condition (A)
+
+n				Number of pole pairs
+
+eta				Motor efficiency lookup structure
+	eta.Is			Stator current breakpoints (Is = √(Id^2 + Iq^2)) (A)
+	eta.omega		Rotor speed breakpoints (rad/sec)
+	eta.eta_m		Motor efficiency (P_mech / P_electrical)
+
+Signals
+
+
+Outputs
+tau				Motor output torque, N m
