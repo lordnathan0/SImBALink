@@ -17,6 +17,12 @@ opt = simset('ReturnWorkspaceOutputs', 'off');
 sub.reload;
 
 figure
-plot(Y(:,1));
+plot(T,Y(:,1));
+title('Wheel Speed')
+xlabel('Time [s]')
+ylabel('Wheel Speed [rad/s]')
 figure
-plot(Y(:,2));
+plot(Y(:,1),Y(:,2));
+xlabel('Wheel Speed [rad/s]');
+ylabel('Wheel Torque [Nm]');
+title('Lossy chain')
