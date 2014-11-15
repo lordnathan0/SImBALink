@@ -31,7 +31,7 @@ xlabel('Slip Speed [%]')
 ylabel('Max Long Tire Force [N]')
 
 %%
-close all
+
 Ct = evalin(sub,'Ct');
 ws = [-1:.01:1];
 dur = length(ws);
