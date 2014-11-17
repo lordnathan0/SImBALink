@@ -19,7 +19,7 @@ clc;
 
 % The name of the data set to use for calibration (should be a folder in
 % the "Raw" directory).
-cell = 'BlueCell';
+cell = 'RedCell';
 
 %% CALIBRATION
 
@@ -27,6 +27,11 @@ cell = 'BlueCell';
 load( fullfile(cell, '0.1C_Discharge.mat') );
 dt			= [0; diff( Time )];	
 Ah			= -cumsum( Current .* dt )/3600;		% discharged capacity, Ah
-Capacity 	= max( abs(Ah) );					% observed cell capacity, Ah
+Capacity 	= max( abs(Ah) );						% observed cell capacity, Ah
 
-% TODO: write model parameters to parameter file
+Voc.SOC		= (Capacity-Ah)./Capacity;
+Voc.V		= Voltage;
+
+% Write model parameter workspace
+info = ['Generated ' date];
+save('Battery pack.mat', 'Voc')
