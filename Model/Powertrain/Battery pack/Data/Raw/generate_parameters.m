@@ -31,12 +31,17 @@ cell = 'RedCell';
 
 %%% OCV calibration
 load( fullfile(cell, '0.1C_Discharge.mat') );
+Time		= Time*3600*24;				% date number to seconds
 dt			= [0; diff( Time )];	
 Ah			= -cumsum( Current .* dt )/3600;		% discharged capacity, Ah
 Capacity 	= max( abs(Ah) );						% observed cell capacity, Ah
 
 Voc.SOC		= flip( (Capacity-Ah)./Capacity )';
 Voc.V		= flip( Voltage )';
+Q_0			= Capacity * 3600;						% Ah -> C
+
+% TEMPORARY - SHOULD LOAD FROM FILE
+T_0			= 20;
 
 % Write model parameter workspace
 info = ['Generated ' date];
