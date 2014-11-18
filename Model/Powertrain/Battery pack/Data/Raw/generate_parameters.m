@@ -29,8 +29,8 @@ dt			= [0; diff( Time )];
 Ah			= -cumsum( Current .* dt )/3600;		% discharged capacity, Ah
 Capacity 	= max( abs(Ah) );						% observed cell capacity, Ah
 
-Voc.SOC		= (Capacity-Ah)./Capacity;
-Voc.V		= Voltage;
+Voc.SOC		= flip( (Capacity-Ah)./Capacity )';
+Voc.V		= flip( Voltage )';
 
 % Write model parameter workspace
 info = ['Generated ' date];
