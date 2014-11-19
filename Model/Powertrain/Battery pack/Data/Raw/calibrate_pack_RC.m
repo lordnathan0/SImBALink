@@ -1,4 +1,4 @@
-function error = calibrate_pack_RC(R0, R1, C1, Idc, V)
+function error = calibrate_pack_RC(R0, R1, C1, Capacity, Idc, V)
 % calibrate_pack_RC.m: simulate battery pack model with specified R0, R1,
 % C1; return fit quality
 % Arguments:
@@ -19,12 +19,23 @@ mws.reload();		% reload workspace from source file
 mws.assignin('R0', R0);
 mws.assignin('R1', R1);
 mws.assignin('C1', C1);
+mws.assignin('Q_0', Capacity*3600);
 mws.assignin('Idc',Idc);
 
 set_param('Battery_pack', 'StopTime', 'max(Idc.Time)');
-output = sim('Battery_pack', 'LoadExternalInput', 'on', 'ExternalInput', 'Idc');
+out = sim('Battery_pack', 'LoadExternalInput', 'on', 'ExternalInput', 'Idc');
 
-error = output;
+%% Calculate error metric
+yout = out.get('yout');
+tout = out.get('tout');
+
+outV = timeseries(yout(:,2),tout);		% Timeseries of simulation output
+sse = V - resample(outV,V.time);		% resample simulation timeseries to truth indices
+sse = sum((sse.Data).^2);	
+
+cd('Data/Raw');
+%error = sse;							% return SSE
+error = out;
 
 
 
