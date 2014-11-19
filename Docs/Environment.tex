@@ -14,18 +14,19 @@ Force directions are defined as longitudinal(long), lateral(lat), and normal(n).
 	
 	\subsubsection{Outputs}
 	\begin{tabular}{ l | l | l  }
-		Output							&	Symbol		&	Unit		\\	\hline
+		Output								&	Symbol		&	Unit		\\	\hline
 		Environment Forces on Tire[3]		&	$F_t$		&	N[3] \\
 		Road Gradient						&	$\theta_r$	&	rad \\
 		Ambient Temperature					&	$T_{amb}$	&  K \\
 		Air Pressure						&	$P$  		& Pa \\
-		Air Density 						&	$\rho$		& $kg/m^3$
+		Air Density 						&	$\rho$		& $kg/m^3$ \\
+		Corner Radius 						&	$R_c$		& $m$
 	\end{tabular}
 
 \subsubsection{Background, rationale, modeling strategy}
 The Environment only models air density, air temperature, and road gradient.
 	\begin{gather}
-		\theta_r  = \frac{d}{dd} h(d) \\
+		\theta_r  = \arctan\left(\frac{\frac{d}{dt} h(d)}{\frac{d}{dt} d}\right) \\
 		T_{amb} = T_0 - L h(d) \\
 		P = P_0 \left( 1 - \frac{L h(d)}{T_0} \right)^{\frac{gM}{RL}}\\
 		\rho = \frac{PM}{1000RT}  
@@ -48,13 +49,28 @@ The Environment only models air density, air temperature, and road gradient.
 		Input 				& Distance Travel	&	$d$  		& m		\\
 		Output 				& height 			&	n/a			&  m
 	\end{tabular} \\
+		$R_c(d)$ \\
+	\begin{tabular}{ l | l | l | l }
+		Type				& Description		&	Symbol		&	Unit		\\	\hline
+		Input 				& Distance Travel	&	$d$  		& m		\\
+		Output 				& Corner Radius 	&	n/a			&  m
+	\end{tabular} \\
 \subsubsection{Assumptions}
 \begin{itemize}
   \item The air is dry 
   \item Temperature lapse rate right is correct (no inversion)
 \end{itemize}
 
+\section{Validation}
 
+To validate the road gradient the Isle of Man altitude map was supplied to the model and the road gradient was plotted. To validate air density data from Colorado was compared to a simulated data.
+
+\begin{figure}[bp!]
+\center
+ \includegraphics[scale=1]{env_val_grad}
+ \includegraphics[scale=1]{env_val_rho}
+  \caption{Environment Validation}
+\end{figure}
 
 
 \end{document}

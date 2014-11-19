@@ -25,7 +25,7 @@ hold all
 plot(alt,rho)
 plot(Y(:,6),Y(:,4))
 legend('data','model')
-title('Validate Density')
+title('Validate Air Density')
 xlabel('Altitude')
 ylabel('Density')
 
@@ -38,8 +38,10 @@ opt = simset('ReturnWorkspaceOutputs', 'off');
 sub.reload;
 
 figure()
-plotyy(Y(:,5),Y(:,6),Y(:,5),Y(:,1));
+[hAx,hLine1,hLine2] = plotyy(Y(:,5),Y(:,6),Y(:,5),Y(:,1));
 title('Validate Road Grad')
-
+xlabel('Sample')
+ylabel(hAx(1),'Altitude [m]')
+ylabel(hAx(2),'Road Rad [rad]')
 
 
