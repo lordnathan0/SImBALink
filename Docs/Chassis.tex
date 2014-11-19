@@ -11,7 +11,8 @@ The forces have a notation of Longitudinal (long), Normal(n) , and Lateral (lat)
 		Input					&	Symbol		&	Unit		\\	\hline
 		Tire Force				& 	$F_t$ 		&	N \\		
 		Air Density 			&	$\rho$		& $kg/m^3$ \\
-		Road Gradient			&	$\theta_r$  & rad
+		Road Gradient			&	$\theta_r$  & rad \\
+		Road Corner Radius		&	$R_c$		& m
 	\end{tabular}
 	
 	\subsubsection{Outputs}
@@ -31,7 +32,7 @@ The Chassis is modeled point mass with drag.
 		F_{c,n} = mg\cos(\theta_r) \\
 		\dot{v} = \frac{F_t}{m} \\
 		\dot{d} = v \\
-		O_l = \arctan(\frac{v^2}{gR_c(d})
+		O_l = \arctan(\frac{v^2}{gR_c})
 \end{gather}
 
 \subsubsection{States}
@@ -53,20 +54,33 @@ The Chassis is modeled point mass with drag.
 		Gravity 				&	$g$			&	$m/s^2$ \\
 		Mass of Motorcycle		&	$m$			&  $kg$				
 	\end{tabular}
-\subsubsection{Look Up table}
-$\theta_l(d)$ \\
-	\begin{tabular}{ l | l | l | l }
-		Type				& Description		&	Symbol		&	Unit		\\	\hline
-		Input 				& Distance Traveled	&	$d$  		& 	m		\\
-		Output 				& Lean Angle		&	n/a			&	rad
-	\end{tabular} \\
 
 \subsubsection{Assumptions}
 \begin{itemize}
     \item The full weight of the motorcycle is always on the correct tire for breaking or acceleration. That is not a bad assumption because maximum braking or acceleration will happen at wheelie or stoppie when there is only one tire on the ground.
     \item Lean angle does not affect Aero Drag
     \item No lateral forces
+    \item lean angle is optimal lean angle given corner radius and speed
 \end{itemize}
+
+\section{Validation}
+
+First the Chassis model was validated by checking the lean angle and normal force by changing road gradient and corder radius. Both normal force and lean angle behave correctly
+
+\begin{figure}[bp!]
+\center
+  \includegraphics[scale=.75]{chassis_val_normal}
+  \includegraphics[scale=.75]{chassis_val_leanangle}
+  \caption{Chassis Validation}
+\end{figure}
+
+Then the Chassis model was validated by simulating a coast down and comparing it against collected data. The data follows the simulation well, but the CdA value needs better calibrated
+
+\begin{figure}[bp!]
+\center
+ \includegraphics[scale=1]{chassis_val_coastdown}
+  \caption{Chassis Validation Coast Down}
+\end{figure}
 
 
 
