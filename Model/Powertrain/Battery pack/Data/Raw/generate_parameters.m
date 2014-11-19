@@ -49,5 +49,5 @@ save('Battery pack.mat', 'Voc', 'Q_0')
 
 %%% Resistance calibration
 load( fullfile(cell, 'Pulse_Discharge_Test.mat') );
-Idc		= timeseries(Amps,Time-Time(1));
-V		= timeseries(Volts,Time-Time(1));
+Idc		= timeseries(Current,Time-Time(1));
+V		= timeseries(Voltage,Time-Time(1));
