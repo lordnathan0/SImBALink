@@ -13,7 +13,7 @@ g2 = getVariable(gear,'Rg');
 rho = 1.2;
 Or = 0;
 Beta = 0;
-V_cmd = 0;
+V_cmd = 40;
 Rc = 10000;
 Tm = 10;
 ks_cmd = .15;
@@ -39,6 +39,6 @@ ylabel('Motor Torque [Nm]')
 
 figure
 plot(t,ks)
-title('Wheel Slip')
+title('Vehicle Speed')
 xlabel('Time [s]')
 ylabel('Wheel Slip [ratio]')
