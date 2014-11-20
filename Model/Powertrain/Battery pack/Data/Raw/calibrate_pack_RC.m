@@ -34,8 +34,8 @@ sse = V - resample(outV,V.time);		% resample simulation timeseries to truth indi
 sse = sum((sse.Data).^2);	
 
 cd('Data/Raw');
-%error = sse;							% return SSE
-error = out;
+error = sse;							% return SSE
+%error = out;
 
 
 
