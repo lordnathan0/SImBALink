@@ -26,7 +26,7 @@
 
 \subsubsection{Background, rationale, modeling strategy} The tire is modeled in three parts, rolling resistance, Load and Torque, and Traction Limiting. Force directions are defined as longitudinal(long), lateral(lat), and normal(n). Longitudinal is along the direction of the motorcycle (when moving straight). Lateral is orthogonal to Longitudinal axis. Normal 3-D orthogonal to lateral and longitudinal, in general the axis to the road on no incline.
 
-The tire model attempts to make the tire torque ($\tau_t$) equal to the gear torque ($\tau_g$). Which means all the remaining (after rolling resistance and Longitude force) Gear Torque ($\tau_g$) goes into Acceleration force ($F_a$). The Acceleration force is saturated at the maximum force ($F_{max}$) do to the tire coefficient so wheel slip occurs when some of the gear torque is not compensated for because of the saturation of the Acceleration force.
+The tire models slip which in turn is used to calculate the force the tire exerts on to the motorcycle. Wheel slip occurs when because the the tire does not exert a force on to the vehicle until there is some wheel slip, thus causing the tire to spin up causing wheel slip.
 
 \begin{gather}
 \notag \textbf{Rolling Resistance} \\
@@ -43,17 +43,7 @@ Frr =
 \notag \textbf{Load and Torque} \\
 \tau_r = F_{w,long}r_t(\theta_l) + F_br_b + F_{rr}r_t(\theta_l) \\
 \notag \textbf{Traction Limiting} \\
-F_{max} = \mu_{t,gnd} F_{w,n} - F_{w,long} \\
-F = \frac{\tau_g - \tau_r}{r_t(\theta_l)} \\
-F_a =
-\left\{
-  \begin{array}{lr}
-	F 	& : F \le F_{max} \\
-	-F 	& : -F_{max} \le F \\
-	F_{max} & : F > F_{max} \\
-	-F_{max} & : -F_{max} > F
-  \end{array}
-\right. \\
+F_a = \mu_{t,gnd} F_{w,n} - F_{w,long} \\
 \notag \textbf{Torque on Chain/Gear} \\
 \tau_a = F_ar_t(\theta_l) \\
 \tau_t = \tau_a + \tau_r
@@ -61,7 +51,7 @@ F_a =
 
 The tire coefficient ($\mu_{t,gnd}$) is modeled using the "Magic Formula" as shown below. Where $D_{\kappa}$ is the maximum tire coefficient of the tire. 
 
- \begin{figure}[h!]
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=1]{magic_formula}
   \caption{Magic Formula }
@@ -100,12 +90,11 @@ $r_t(\theta_l)$ \\
 
 \section{Validation}
 
-The tire model was swept through different slip speeds to validate correct shapes. All validation looks right but multiple parts need to be connected to check for proper dynamics. 
+The tire model was swept through different slip speeds to validate correct shapes. All validation looks correct but multiple parts need to be connected to check for proper dynamics. 
 
 \begin{figure}[H]
 \center
  \includegraphics[scale=1]{tire_val_magic}
- \includegraphics[scale=1]{tire_val_traction}
   \caption{Tire Validation}
 \end{figure}
 
