@@ -47,7 +47,7 @@ T_0			= 20;
 
 % Write model parameter workspace
 info = ['Generated ' date];
-save(output, 'Voc', 'Q_0')
+save(output, 'Voc', 'Q_0', 'T_0')
 
 %%% Resistance calibration
 display 'Calibrating resistances...'
