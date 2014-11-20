@@ -33,4 +33,9 @@ guess.C1 = 1000;
 guess.Capacity = 2.5;
 
 fxn = @(x)calibrate_pack_RC(x(1), x(2), x(3), x(4), Idc, V);
-[result, what, sse] = fminsearch( fxn, [guess.R0 guess.R1 guess.C1 guess.Capacity]);
+
+options = optimset('PlotFcns',@optimplotfval);
+[result, what, sse] = fminsearch( fxn, [guess.R0 guess.R1 guess.C1 guess.Capacity],options);
+
+%% test model performance 
+mfilename()
