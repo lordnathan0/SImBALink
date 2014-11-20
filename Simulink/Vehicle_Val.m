@@ -13,7 +13,7 @@ g2 = getVariable(gear,'Rg');
 rho = 1.2;
 Or = 0;
 Beta = 0;
-V_cmd = 30;
+V_cmd = 40;
 Rc = 10000;
 Tm = 10;
 ks_cmd = .15;
@@ -27,9 +27,18 @@ sim('Vehicle_Validation', dur)
 
 figure
 plot(t,v)
+title('Vehicle Speed')
+xlabel('Time [s]')
+ylabel('Velocity [m/s]')
 
 figure
 plot(t,Tm)
+title('Motor Torque')
+xlabel('Time [s]')
+ylabel('Motor Torque [Nm]')
 
 figure
 plot(t,ks)
+title('Wheel Slip')
+xlabel('Time [s]')
+ylabel('Wheel Slip [ratio]')

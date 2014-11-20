@@ -38,8 +38,8 @@ Frr =
   \end{array}
 \right. \\
 \notag \textbf{Wheel Slip} \\
-\kappa = \frac{v - \omega_t r_t(\theta_l)}{v} \\
-\mu_{t,gnd} = \left| D_{\kappa}\sin(C_{\kappa} \arctan[B_{\kappa}\kappa - E_{\kappa}(B_{\kappa}\kappa - \arctan B_{\kappa}\kappa)]) \right| \\
+\kappa = -\frac{v - \omega_t r_t(\theta_l)}{v} \\
+\mu_{t,gnd} =  D_{\kappa}\sin(C_{\kappa} \arctan[B_{\kappa}\kappa - E_{\kappa}(B_{\kappa}\kappa - \arctan B_{\kappa}\kappa)])  \\
 \notag \textbf{Load and Torque} \\
 \tau_r = F_{w,long}r_t(\theta_l) + F_br_b + F_{rr}r_t(\theta_l) \\
 \notag \textbf{Traction Limiting} \\
@@ -102,7 +102,7 @@ $r_t(\theta_l)$ \\
 
 The tire model was swept through different slip speeds to validate correct shapes. All validation looks right but multiple parts need to be connected to check for proper dynamics. 
 
-\begin{figure}[bp!]
+\begin{figure}[H]
 \center
  \includegraphics[scale=1]{tire_val_magic}
  \includegraphics[scale=1]{tire_val_traction}
