@@ -6,7 +6,7 @@ sub.reload;
 
 Ct = evalin(sub,'Ct');
 
-ws = [-1:.01:1];
+ws = [0:.01:1];
 dur = length(ws);
 t = [1:1:dur];
 v = ones(dur,1)*.1;
@@ -25,7 +25,7 @@ sub.reload;
 
 
 figure
-plot(Y(:,3),Y(:,2))
+plot(Y(:,2),Y(:,6))
 title('Validate Magic Equation F_n = 400')
 xlabel('Slip Speed [%]')
 ylabel('Max Long Tire Force [N]')
@@ -52,10 +52,10 @@ sub.reload;
 
 figure
 hold all
-plot(Y(:,3),Y(:,1))
-plot(Y(:,3),Y(:,2))
+plot(Y(:,2),Y(:,1))
+plot(Y(:,2),Y(:,6))
 title('Validate Traction')
-xlabel('Slip Speed [%]')
+xlabel('Slip Speed [ratio]')
 ylabel('Tire Force [N]')
 legend('Limited','Max');
 
