@@ -1,6 +1,7 @@
 close all
 
-v0 = 20;
+
+v0 = 30;
 chas = get_param('Chassis','ModelWorkspace');
 gear = get_param('Gear_Chain','ModelWorkspace');
 tire = get_param('Tires','ModelWorkspace');
@@ -26,10 +27,12 @@ dur = 100;
 sim('Vehicle_Validation', dur)
 
 figure
+hold all
 plot(t,v)
 title('Vehicle Speed')
 xlabel('Time [s]')
 ylabel('Velocity [m/s]')
+
 
 figure
 plot(t,Tm)
