@@ -22,17 +22,19 @@ for i = cda_runs
 end
 
 v0 = 30;
+pt = 100;
 chas = get_param('Chassis','ModelWorkspace');
 gear = get_param('Gear_Chain','ModelWorkspace');
 tire = get_param('Tires','ModelWorkspace');
 
 assignin(chas,'v0',v0);
+assignin(chas,'pt',pt);
 g1 = getVariable(tire,'Ct');
 g2 = getVariable(gear,'Rg');
 
 
 rho = 1.2;
-Or = 0;
+Or = alpha;
 Beta = 0;
 V_cmd = 0;
 Rc = 10000;
