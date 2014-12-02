@@ -14,14 +14,14 @@ load CdA_data
 figure
 hold all
 
-cda_runs = [7];
+cda_runs = [6,3];
 for i = cda_runs
     %acceleration
     I = find(diff(CdA_data{1,i}));
     CdA_data{4,i} = CdA_data{1,i}(I).*eff_tyre;
 end
 
-v0 = 30;
+v0 = 37;
 chas = get_param('Chassis','ModelWorkspace');
 gear = get_param('Gear_Chain','ModelWorkspace');
 tire = get_param('Tires','ModelWorkspace');
@@ -32,7 +32,7 @@ g2 = getVariable(gear,'Rg');
 
 
 rho = 1.2;
-Or = 0;
+Or = -0.0157;
 Beta = 0;
 V_cmd = 0;
 Rc = 10000;
