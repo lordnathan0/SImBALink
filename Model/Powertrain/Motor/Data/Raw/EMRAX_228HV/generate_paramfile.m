@@ -26,8 +26,9 @@ load(base_matfile, 'Ld', 'Lq', 'R');
 Ld.Value	= 175e-6;
 Lq.Value	= 180e-6;
 R.Value		= 18e-3;
+Kt.Value	= 1.1;
 
-save(outfile, 'Ld', 'Lq', 'R');
+save(outfile, 'Ld', 'Lq', 'R', 'Kt');
 
 %% Stored elsewhere
 % Load efficiency data from CSV. Right now this CSV is just a table with
