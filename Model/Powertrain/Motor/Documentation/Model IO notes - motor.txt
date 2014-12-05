@@ -1,8 +1,9 @@
 params for motor model
 
 Inputs
-Vd				D-axis applied voltage (V)
-Vq				Q-axis applied voltage (V)
+Is				(bus)
+	Id				D-axis current (Adc)
+	Iq				Q-axis current (Adc)
 omega			motor speed ( rad/sec )
 
 T_in			Coolant temperature at motor input (deg C)
@@ -10,13 +11,6 @@ mdot_in			Mass flow rate of coolant (kg/sec)
 				FIXME: choose symbol. 
 
 Parameters
-Ld 				D-axis motor inductance (H)
-Lq				Q-axis motor inductance (H)
-R				Motor phase resistance (R)
-phi_m			Motor flux linkage
-
-Id_0			Motor D-axis current initial condition (A)
-Iq_0			Motor Q-axis current initial condition (A)
 
 n				Number of pole pairs
 
@@ -26,6 +20,7 @@ eta				Motor efficiency lookup structure
 	eta.eta_m		Motor efficiency (P_mech / P_electrical)
 	
 theta			Thermal resistance between stator coil and coolant (deg C/W)
+Kt				Motor torque constant (Nm / A_rms) - A_rms refers to the stator current Is
 
 
 Signals
