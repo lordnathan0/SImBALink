@@ -21,7 +21,7 @@
 \subsubsection{Background, rationale, modeling strategy}
 The tire, chain, gear, and motor are modeled as a lumped inertia that is accelerated by the motor torque and tire torque(modeled as a load). The chain is modeled lossey through an efficiency map. Gearing is modeled as a ratio that linearly changes motor torque to gear torque. This method of modeling allows for wheel slip down the line.
 		\begin{gather}
-		\dot{\omega_t} = \frac{\tau_m - \tau_t}{J_m + J_g + J_t + J_c} \\
+		\dot{\omega_t} = \frac{\tau_g - \tau_t}{J_m + J_g + J_t + J_c} \\
 		\tau_g = \frac{\tau_m \eta_c (\omega_t)}{R_g}
 		\end{gather}
 
@@ -31,14 +31,14 @@ The tire, chain, gear, and motor are modeled as a lumped inertia that is acceler
 		Tire Velocity 			&	$\omega_t$	&	rad/s
 	\end{tabular}
 
-\subsubsection{Variables}
+\subsubsection{Parameters}
 	\begin{tabular}{ l | l | l  }
-		Output					&	Symbol		&	Unit		\\	\hline
+		Parameters					&	Symbol		&	Unit		\\	\hline
 		Motor inertia		&	$J_m$		&	 $kg*m^2$ \\ 
 		Gear inertia		&	$J_g$		&	 $kg*m^2$ \\ 
 		Chain inertia		&	$J_c$		&	 $kg*m^2$ \\ 
 		Tire inertia		&	$J_t$		&	 $kg*m^2$ \\ 
-		Gear Ratio			&	$R_g$		&	$\frac{\tau_m}{\tau_g}$
+		Gear Ratio			&	$R_g$		&	$\frac{\tau_g}{\tau_m}$
 	\end{tabular}
 	
 \subsubsection{Functions}
@@ -62,5 +62,23 @@ The function is modeled as a look up table following the curve below described i
   \item The chain and gearing is rigid (no chain/gear dynamics)
   \item Chain efficiency is only a function of wheel speed
 \end{itemize}
+
+\subsection{Validation}
+
+The model was subjected to a motor torque of 10 and an increasing tire torque. The model works correctly. The wheel increases in speed and the correctly models the losses in the chain.
+
+
+\begin{figure}[H]
+\center
+  \includegraphics[scale=.75]{gear_val_lossy_chain}
+  \includegraphics[scale=.75]{gear_val_spin_up}
+  \caption{Gear and Chain Validation}
+\end{figure}
+
+
+
+
+
+
 
 \end{document}
