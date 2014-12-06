@@ -64,11 +64,16 @@ close all
 starttime = ts{1}.Data(datastart);
 endtime = 832;
 thr = ts{26};
+rpm = ts{34};
+eff_tyre = 0.01843; %(m/s)/RPM
 
 figure
 plot(thr);
 
 thr_sample = getsampleusingtime(thr,starttime,endtime) ;
+rpm_sample = getsampleusingtime(rpm,starttime,endtime);
+
+dist = cumtrapz(rpm_sample.Time,rpm_sample.Data*eff_tyre*-1);
 
 figure
 plot(thr_sample);
