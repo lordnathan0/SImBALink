@@ -88,6 +88,27 @@ $r_t(\theta_l)$ \\
   \item No change in rolling resistance with lean angle 
 \end{itemize}
 
+\section{Calibration}
+The magic formula was calibrated using non-linear least squares to data collected from BikeSim. The calibration was fit to data for a normal force of 400 Newtons.
+
+\begin{figure}[H]
+\center
+ \includegraphics[scale=1]{cal_magic}
+  \caption{Magic Formula Calibration}
+\end{figure}
+
+It can be seen the fit is very good.
+
+The fit was then compared to other normal forces.
+
+\begin{figure}[H]
+\center
+ \includegraphics[scale=1]{val_magic}
+  \caption{Magic Formula validation}
+\end{figure}
+
+The fit is not longer perfect, it can be seen the tire coefficient changes with normal force but it is not being modeled.
+
 \section{Validation}
 
 The tire model was swept through different slip speeds to validate correct shapes. All validation looks correct but multiple parts need to be connected to check for proper dynamics. 
