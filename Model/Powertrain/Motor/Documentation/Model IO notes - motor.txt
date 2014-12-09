@@ -12,7 +12,10 @@ mdot_in			Mass flow rate of coolant (kg/sec)
 
 Parameters
 
-n				Number of pole pairs
+Ld				D-axis inductance, henry
+Lq				Q-axis inductance, henry
+R				Equivalent-circuit series resistance, ohms
+phi_m			Permanent-magnet flux linkage, (volt*second/rad)
 
 eta				Motor efficiency lookup structure
 	eta.Is			Stator current breakpoints (Is = √(Id^2 + Iq^2)) (A)

@@ -6,6 +6,8 @@ clc;
 motor	= 'EMRAX_228HV';
 output	= fullfile('..', 'Motor.mat');
 
+load('Is_bus');
+
 %% Calibrate phi_m
 load( fullfile(motor, '228HV_Coastdown_Calibration.mat') );		%FIXME: this should have a standard filename
 ts = ts_subset;
