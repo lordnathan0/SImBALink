@@ -16,7 +16,7 @@ outfile = motor_name;
 
 % something to remember me by
 info = 'EMRAX 228HV motor parameter data - Dec 2014';
-save(outfile, 'info');
+save(outfile, 'info', '-append');
 
 %% Static parameters
 % These should be moved to a separate MATfile or something
@@ -28,7 +28,7 @@ Lq.Value	= 180e-6;
 R.Value		= 18e-3;
 Kt.Value	= 1.1;
 
-save(outfile, 'Ld', 'Lq', 'R', 'Kt');
+save(outfile, 'Ld', 'Lq', 'R', 'Kt', '-append');
 
 %% Stored elsewhere
 % Load efficiency data from CSV. Right now this CSV is just a table with
@@ -40,4 +40,4 @@ eta.speed		= effData(:,1);
 eta.tau			= effData(:,2);
 eta.eta			= effData(:,3);
 
-save(outfile, 'eta');
+save(outfile, 'eta', '-append');
