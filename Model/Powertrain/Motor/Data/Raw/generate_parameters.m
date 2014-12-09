@@ -1,3 +1,6 @@
+% Generate a motor parameter file (MOTOR_NAME.mat) for the Motor.slx model.
+% 
+
 clear;
 clc;
 
@@ -6,7 +9,15 @@ clc;
 motor	= 'EMRAX_228HV';
 output	= fullfile('..', 'Motor.mat');
 
-load('Is_bus');
+% Generate a "test harness" bus so that the motor model can run standalone
+% (this bus is normally defined by the input to the model)
+Is_bus = Simulink.Bus;
+Iq		= Simulink.BusElement;
+Iq.Name	= 'Iq';
+Id		= Simulink.BusElement;
+Id.Name = 'Id';
+Is_bus.Elements = [Iq Id];
+clear('Iq', 'Id');
 
 %% Calibrate phi_m
 load( fullfile(motor, '228HV_Coastdown_Calibration.mat') );		%FIXME: this should have a standard filename
