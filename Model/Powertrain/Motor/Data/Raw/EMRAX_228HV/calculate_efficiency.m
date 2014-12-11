@@ -1,4 +1,4 @@
-function [ eta ] = calculate_efficiency( )
+function eta = calculate_efficiency( )
 %CALCULATE_EFFICIENCY - Calculate motor efficiency map breakpoints
 
 % This script returns motor efficiency map breakpoints in a usable format
@@ -9,9 +9,9 @@ function [ eta ] = calculate_efficiency( )
 
 effData = csvread('EMRAX_228HV_efficiency.csv', 1);
 
-eta.speed		= effData(:,1);
-eta.tau			= effData(:,2);
-eta.eta			= effData(:,3);
+eta.speed		= unique( effData(:,1) )';
+eta.tau			= unique( effData(:,2) );
+eta.eta			= vec2mat( effData(:,3), length(eta.speed) );
 
 end
 
