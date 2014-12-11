@@ -13,6 +13,6 @@ Lq.DocUnits		=	'H';
 Lq.Description	=	'Motor Q-axis equivalent-circuit inductance (H)';
 
 R				=	Simulink.Parameter;
-R.Value			=	18e-e;
+R.Value			=	18e-3;
 R.DocUnits		=	'ohm';
 R.Description	=	'Motor equivalent-circuit resistance';
