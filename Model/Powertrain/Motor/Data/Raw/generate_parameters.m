@@ -8,6 +8,8 @@
 %		map breakpoints
 %	-	"<motorname>_const_parameters.m", a script that assigns variables
 %		corresponding to "constant" motor parameters
+%	-	"<motorname>_signals.m", a script that creates the Simulink.Signal
+%		objects corresponding to the signals in the model
 
 clear;
 clc;
@@ -20,6 +22,7 @@ info = 'EMRAX 228HV motor parameter data - Dec 2014';
 % the "Raw" directory).
 motor	= 'EMRAX_228HV';
 output	= fullfile('..', 'Motor.mat');
+output	= fullfile('..', 'Configurations', [ motor '.mat']);
 
 % phi_m_cal_source
 % Name of the file containing the dataset to be used for phi_m calibration.
