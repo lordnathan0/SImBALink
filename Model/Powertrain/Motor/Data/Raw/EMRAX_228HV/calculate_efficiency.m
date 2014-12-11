@@ -10,8 +10,8 @@ function eta = calculate_efficiency( )
 effData = csvread('EMRAX_228HV_efficiency.csv', 1);
 
 eta.speed		= unique( effData(:,1) )';
-eta.tau			= unique( effData(:,2) );
-eta.eta			= vec2mat( effData(:,3), length(eta.speed) );
+eta.tau			= unique( effData(:,2) )';
+eta.eta			= vec2mat( effData(:,3), length(eta.tau) );
 
 end
 

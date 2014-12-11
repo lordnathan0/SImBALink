@@ -21,57 +21,42 @@ info = 'EMRAX 228HV motor parameter data - Dec 2014';
 % The name of the data set to use for calibration (should be a folder in
 % the "Raw" directory).
 motor	= 'EMRAX_228HV';
-output	= fullfile('..', 'Motor.mat');
 output	= fullfile('..', 'Configurations', [ motor '.mat']);
+path(motor, path)
 
-% phi_m_cal_source
-% Name of the file containing the dataset to be used for phi_m calibration.
-% This file should have:
-%	* info		-	string describing the source of the data
-%	* Is: structure
-%	*	Is.Id	-	timeseries with d-axis motor current
-%	*	Is.Iq	-	timeseries with q-axis motor current
-%	* Vs: structure
-%	*	Vs.Vd	-	timeseries with d-axis motor terminal voltage
-%	*	Vs.Vq	-	timeseries with q-axis motor terminal voltage
-%	* omega		-	timeseries of motor speed (rad/sec)
-phi_m_cal_source = '228HV_Coastdown.mat';
+%% Load constant parameters
+run( [ motor '_const_parameters.m' ] );
 
-% Generate a "test harness" bus so that the motor model can run standalone
-% (this bus is normally defined by the input to the model)
-Is_bus = Simulink.Bus;
-Iq		= Simulink.BusElement;
-Iq.Name	= 'Iq';
-Id		= Simulink.BusElement;
-Id.Name = 'Id';
-Is_bus.Elements = [Iq Id];
-clear('Iq', 'Id');
+%% Load motor signals
+run( [ motor '_signals.m' ] );
 
-%% Calibrate phi_m
-load( fullfile(motor, '228HV_Coastdown_Calibration.mat') );		%FIXME: this should have a standard filename
-ts = ts_subset;
+%% Calculate efficiency
+eta		=	calculate_efficiency();
 
-Is.Iq	=	ts{28}*(-1); %Iq
-Is.Id	=	ts{27}*(-1); %Id
+%% Write to file (prelim)
+save( output,	...
+	'info',		...
+	'eta',		...
+	'Ld',		...
+	'Lq',		...
+	'R',		...
+	'eta_m',	...
+	'Pwaste',	...
+	'Vs'		...
+);
 
-% first timestamp
-startTime = max( min(Is.Iq.time), min(Is.Id.time) );
+%% Calculate motor flux linkage
+phi_m	= calculate_fluxlinkage();
 
-
-Is.Iq.Time = Is.Iq.Time - startTime;
-Is.Id.Time = Is.Id.Time - startTime;
-
-Vs.Vq	=	ts{36};		%Vq
-Vs.Vq.Time = Vs.Vq.Time - startTime;
-Vs.Vd	=	ts{33};		%Vd
-Vs.Vd.Time = Vs.Vd.Time - startTime;
-
-omega	=	ts{34}*(2*pi/60)*(-1);	% motor speed (rpm -> rad/sec)
-omega.Time = omega.Time - startTime;
-
-f = @(phi) calibrate_motor_phi(phi, Is, omega, Vs);
-
-guess = 1;
-
-options = optimset('PlotFcns',@optimplotfval);
-cal = fminsearch( f, guess, options);
+%% Write to file (final)
+save( output,	...
+	'info',		...
+	'eta',		...
+	'phi_m',	...
+	'Ld',		...
+	'Lq',		...
+	'R',		...
+	'eta_m',	...
+	'Pwaste',	...
+	'Vs'		...
+);

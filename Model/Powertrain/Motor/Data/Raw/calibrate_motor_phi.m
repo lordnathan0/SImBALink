@@ -20,6 +20,19 @@ mws.reload();		% reload workspace from source file
 
 % set specified values in model workspace
 mws.assignin('phi_m', phi_m);
+mws.assignin('Is', Is);
+mws.assignin('omega', omega);
+
+% Generate a "test harness" bus so that the motor model can run standalone
+% (this bus is normally defined by the input to the model)
+Is_bus = Simulink.Bus;
+Iq		= Simulink.BusElement;
+Iq.Name	= 'Iq';
+Id		= Simulink.BusElement;
+Id.Name = 'Id';
+Is_bus.Elements = [Iq Id];
+clear('Iq', 'Id');
+assignin('base', 'Is_bus', Is_bus);
 
 % only run as long as we have all calibration inputs
 set_param('Motor', 'StopTime', 'min( max(Is.Iq.Time), max(Is.Id.Time) )');
