@@ -63,6 +63,26 @@ The Chassis is modeled point mass with drag.
     \item lean angle is optimal lean angle given corner radius and speed
 \end{itemize}
 
+\section{Calibration}
+
+The model was calibrated against coastdown data using linear least squares. Both $C_dA$ and Rolling resistance values were found using the following equation.
+\begin{gather}
+	Force = 0.5\rho V^2 + mgV\cos(\alpha) + mg\sin(\alpha) \\
+	m = 236.04 + 90.71 \\
+	\rho = 1.187 \\
+	\alpha = -.0157
+\end{gather}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=1]{cda_val}
+  \caption{CdA Calibration Validation}
+\end{figure}
+
+The figure above shows the calibrated value and the guess compared to data. The calibrated value is close to the guess and follows the data well.
+
+
+
 \section{Validation}
 
 First the Chassis model was validated by checking the lean angle and normal force by changing road gradient and corder radius. Both normal force and lean angle behave correctly

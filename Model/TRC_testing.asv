@@ -1,0 +1,20 @@
+%load CoastDownTimeSeries
+datastart = 1300;
+
+close all
+starttime = ts{1}.Data(datastart);
+endtime = 832;
+thr = ts{26};
+rpm = ts{34};
+eff_tyre = 0.01843; %(m/s)/RPM
+v0 = rpm.Data(datastart) * eff_tyre;
+
+chas = get_param('Chassis','ModelWorkspace');
+gear = get_param('Gear_Chain','ModelWorkspace');
+tire = get_param('Tires','ModelWorkspace');
+
+assignin(chas,'v0',v0);
+g1 = getVariable(tire,'Ct');
+
+assignin(gear,'w0',(v0)/g1);
+
