@@ -37,7 +37,7 @@ Vs.Vq.Time = Vs.Vq.Time - startTime;
 Vs.Vd	=	ts{33};		%Vd
 Vs.Vd.Time = Vs.Vd.Time - startTime;
 
-omega	=	ts{34}*(2*pi/60)*(-1);	% motor speed (rpm -> rad/sec)
+omega	=	ts{34}*(pi/60)*(-1);	% motor speed (rpm -> rad/sec)
 omega.Time = omega.Time - startTime;
 
 f = @(phi) calibrate_motor_phi(phi, Is, omega, Vs);
