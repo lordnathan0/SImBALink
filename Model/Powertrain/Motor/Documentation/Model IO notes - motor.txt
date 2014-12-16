@@ -1,0 +1,55 @@
+params for motor model
+
+Inputs
+Is				(bus)
+	Id				D-axis current (Adc)
+	Iq				Q-axis current (Adc)
+omega			motor speed ( rad/sec )
+
+T_in			Coolant temperature at motor input (deg C)
+mdot_in			Mass flow rate of coolant (kg/sec)
+				FIXME: choose symbol. 
+
+Parameters
+
+Ld				D-axis inductance, henry
+Lq				Q-axis inductance, henry
+R				Equivalent-circuit series resistance, ohms
+phi_m			Permanent-magnet flux linkage, (volt*second/rad)
+
+eta				Motor efficiency lookup structure
+	eta.Is			Stator current breakpoints (Is = √(Id^2 + Iq^2)) (A)
+	eta.omega		Rotor speed breakpoints (rad/sec)
+	eta.eta_m		Motor efficiency (P_mech / P_electrical)
+	
+theta			Thermal resistance between stator coil and coolant (deg C/W)
+
+
+Signals
+
+Vs
+	Vd			Motor d-axis terminal voltage
+	Vq			Motor q-axis terminal voltage
+	
+eta_m			Instantaneous motor efficiency
+Pwaste			Motor waste power (to heat), W
+
+
+Outputs
+tau				Motor output torque, N m
+T				Motor coil temperature, deg C
+
+** STRUCTURE
+
+- The model always loads data from "Motor.mat", a mat file with a bunch of Simulink.Parameter objects that represent parameters.
+- In the "Data/Configurations" directory, there are a number of other .mat files which can be loaded. Same structure as the "Motor.mat" file. They are for different motor models.
+- External scripts are responsible for generating the .mat files in Data/Configurations. They should look at raw test files in "Data/Raw/<motor_config_name>/", interpret it, then write a configuration file to "Data/Configurations/<motor_config_name>.mat".
+- There should be an "info" string in "Motor.mat" (and the related matfiles) that describes what the file is, where it came from, and what it does.
+
+In "generate_parameters.m":
+	- The routine that generates the motor efficiency map is broken out into a separate function (calculate_efficiency.m), which is stored with the /raw/ data, not common to all datasets. This is to accomodate various sources of efficiency data.
+	
+	For example, the 228HV calculate_efficiency.m simply reads in the efficiency values from a CSV, since the values are given on a plot from the manufacturer. For a different motor (e.g., the 268MV), calculate_efficiency.m might calibrate efficiency values from a datafile with raw test results. 
+
+In "Data/Raw":
+	- There is a file, <motor_config_name>_const_parameters.m. It is a **script** (not a function) that generates Simulink.Parameter objects for the "given" or "constant" parameters (e.g., datasheet mass, or measured mass, for a motor).

@@ -1,0 +1,37 @@
+params for motor model
+
+Inputs
+Idc	Pack DC current (from positive to negative terminal) (A)
+
+Parameters
+Q_0				Initial stored energy (C)
+n 				Number of series cells
+R0(SOC, T)		series resistance 0, per cell, 1D lookup
+	R0.SOC			state-of-charge breakpoints (1D)
+	R0.T			temperature breakpoints (1D)
+	R0.R			resistance data (2D)
+R1(SOC, T) 		series resistance 1, per cell, 1D lookup
+	R1.SOC			state-of-charge breakpoints (1D)
+	R1.T			temperature breakpoints (1D)
+	R1.R			resistance data (2D)
+C1(SOC, T) 		series capacitance 1, per cell, 1D lookup
+	C1.SOC			state-of-charge breakpoints (1D)
+	C1.T			temperature breakpoints (1D)
+	C1.C			capacitance data (2D)
+Voc(SOC, T)		open-circuit voltage, per cell, 2D? lookup
+	Voc.SOC			state-of-charge breakpoints (1D)
+	Voc.T			temperature breakpoints (1D)
+	Voc.V			open-circuit voltage data (2D)
+
+Signals
+Q 			Stored energy (coulomb)
+
+	Thermal model
+	Pwaste			Waste power from I^2 R (W)
+
+Outputs
+SOC			state of charge, =Q/Q0
+V			terminal voltage (V)
+T			cell temperature (deg C)
+
+supporting 

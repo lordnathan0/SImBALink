@@ -5,3 +5,5 @@
 TSWLatexianTemp*
 Docs/*.pdf
 !Docs/Bib/*.pdf
+*.autosave
+*.original
