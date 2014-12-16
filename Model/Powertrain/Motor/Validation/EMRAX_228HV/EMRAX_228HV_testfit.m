@@ -14,7 +14,6 @@ Is.Id	=	ts{27}*(-1); %Id
 % first timestamp
 startTime = max( min(Is.Iq.time), min(Is.Id.time) );
 
-
 Is.Iq.Time = Is.Iq.Time - startTime;
 Is.Id.Time = Is.Id.Time - startTime;
 
@@ -57,3 +56,28 @@ sim_log = get(out, 'logsout');
 vs_sim = sim_log.get('Vs');
 vd_sim = vs_sim.Values.Vd;
 vq_sim = vs_sim.Values.Vq;
+
+figure(1)
+hold on;
+plot(Vs.Vq);
+plot(vq_sim, 'r');
+legend('Truth','Sim');
+title('Vq: simulation results vs. truth');
+xlabel('Time (sec)');
+ylabel('Vq: q-axis terminal voltage');
+hold off;
+
+saveas(gcf, 'Figures/Vq.png');
+saveas(gcf, 'Figures/Vq.eps', 'epsc');
+
+figure(2)
+hold on;
+sim_tau = timeseries( get(out, 'yout'), get(out, 'tout') );
+plot(sim_tau);
+title('Motor torque: simulation results');
+xlabel('Time (sec)');
+ylabel('Motor torque (N m)');
+hold off;
+
+saveas(gcf, 'Figures/torque.png');
+saveas(gcf, 'Figures/torque.eps', 'epsc')
