@@ -1,0 +1,17 @@
+params for motor controller model
+
+inputs
+	Motor_Current_Command		motor current commanded % [0-1]
+	Motor_Velocity_Command		motor velocity command (rpm)
+	Bus_Current_Command			DC bus current command % [0-1]
+	
+	omega_m						motor rotational speed (rad/sec)
+	T_m							motor temperature measurement (ºC)
+	Vdc							DC bus voltage (V)
+	
+	
+parameters
+	Sine_Current_Limit			motor phase current limit (Arms)
+	
+	Motor_Ramp_Temperature		Motor derating ramp temp (ºC)
+	Motor_Cutout_Temperature	Motor derating cutout temp (ºC)
