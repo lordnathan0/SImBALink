@@ -35,7 +35,6 @@ outV = timeseries(yout(:,2),tout);		% Timeseries of simulation output
 sse = V - resample(outV,V.time);		% resample simulation timeseries to truth indices
 sse = sum((sse.Data).^2);	
 
-cd('Data/Raw');
 error = sse;							% return SSE
 %error = out;
 
