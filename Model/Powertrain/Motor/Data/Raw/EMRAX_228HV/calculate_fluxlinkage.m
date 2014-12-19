@@ -1,6 +1,6 @@
 function phi_m = calculate_fluxlinkage( )
 %CALCULATE_FLUXLINKAGE Use methods to calibrate motor flux linkage
-%   Detailed explanation goes here
+%   This function should be run from the "Data/Raw" folder.
 
 % phi_m_cal_source
 % Name of the file containing the dataset to be used for phi_m calibration.

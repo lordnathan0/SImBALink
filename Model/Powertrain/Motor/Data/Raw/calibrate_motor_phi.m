@@ -16,6 +16,8 @@ function error = calibrate_motor_phi(phi_m, Is, omega, Vs)
 load_system(fullfile( '..', '..', 'Motor'));
 mws = get_param(bdroot, 'modelworkspace');
 
+% change model data source path (temporary - we won't save this)
+mws.FileName = fullfile('..', 'Configurations', 'EMRAX_228HV.mat');
 mws.reload();		% reload workspace from source file
 
 % set specified values in model workspace
