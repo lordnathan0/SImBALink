@@ -9,10 +9,12 @@ function error = calibrate_pack_RC(R0, R1, C1, Capacity, Idc, V)
 %	V		terminal voltage timeseries
 
 %% configure model workspace
-cd('../..');
-load_system('Battery_pack');
+model_path = fullfile( '..', '..', 'Battery_pack' );
+load_system(model_path);
 mws = get_param(bdroot, 'modelworkspace');
 
+% change model data source path (temporary - we won't save this)
+mws.FileName = fullfile('..', 'Battery pack.mat');
 mws.reload();		% reload workspace from source file
 
 % set specified values in model workspace
