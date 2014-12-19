@@ -1,0 +1,50 @@
+\documentclass[../SimBALink.tex]{subfiles}
+\begin{document}
+
+\section{Battery pack model performance}
+	The battery pack model was calibrated against discharge data from three sample cells. The model, with the calibrated parameters, was simulated using a current profile representative of a competition load. The model output was compared to test data.
+	\subsection{Calibration}
+		The battery pack model was calibrated using data from two discharge tests.
+		
+		\subsubsection{Open-circuit voltage}
+			First, a low-rate discharge test was used to approximate the battery open-circuit voltage $V_\text{oc}(\text{SOC)}$. In this test, the battery was charged to a terminal voltage of 4.2 V (constant-voltage, C/20 cutoff), then discharged at 0.1C until the terminal voltage reached \todo{battery cutoff voltage}. 
+		
+			\missingfigure{Data from discharge testing}
+		
+			The actual current out of the cell recorded during testing was integrated to calculate the capacity discharged as a function of time. Equation \ref{eqn:SOC} gives the expression of battery state-of-charge, where $C$ is the battery capacity in amp-hours, and $I(T)$ is the measured discharge current from the cell, in amps.
+		
+			\begin{gather}
+				C = \int_0^{t_\text{end}} \! I(T) \, \mathrm{d}T				\\
+				\text{SOC}(t) = 1 - \frac{1}{C} \int_0^{t} \! I(T) \, \mathrm{d}T
+				\label{eqn:SOC}
+			\end{gather} 
+		
+			$\text{SOC}(t)$ and $V(t)$, the measured terminal voltage of the cell, were used to create a 1D lookup table of the cell's open-circuit terminal voltage.
+			
+			\FloatBarrier
+			
+		\subsubsection{Equivalent-circuit parameters}
+			After the open-circuit voltage had been calibrated and loaded into the model, data from a pulse discharge test was used to calibrate the equivalent-circuit parameters $R_0$, $R_1$, and $C_1$. The discharge test current profile, shown in Figure \todo{Add discharge test current profile figure}, consists of sets of high-magnitude current pulses at different states of charge.
+			
+			\missingfigure{Discharge current/voltage profile for pulse discharge test}
+			
+			Using the discharge current profile in Figure \todo{discharge test current profile}, the model parameters in Table \ref{table:battery_calibrated_parameters} were calibrated using the MATLAB \texttt{fminsearch()} function.
+			
+			\begin{table}
+				\centering
+				\caption{Calibrated parameters in battery pack model}
+				\label{table:battery_calibrated_parameters}
+				\begin{tabular}{c | l | c | c}
+					Symbol		&	Parameter			&	Initial guess value	&	Calibrated value	\\
+					\hline
+					$R_0$		&	Zero-order resistance	&	25 m$\Omega$	&	24.5 m$\Omega$	\\
+					$R_1$		&	First-order resistance	&	25 m$\Omega$	&	24.1 m$\Omega$	\\
+					$C_1$		&	First-order capacitance	&	1000 farad		&	982.9 farad		\\
+					$R_0$		&	Capacity				&	2.5 Ah			&	2.35 Ah
+				\end{tabular}
+			\end{table}
+			
+			The capacity parameter was included as a calibrated parameter because initial tests with the model displayed what appeared to be a scaling error in the model's open-circuit voltage term.
+		
+		
+\end{document}
