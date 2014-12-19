@@ -90,6 +90,15 @@
 
 
 \section{Assumptions}
+	The motor electrical model is significantly simplified.
+	\begin{itemize}
+		\item 
+			The model assumes that the motor magnetization is linear (i.e., the motor never saturates).
+		\item
+			The model assumes that the motor inductances $L_d$ and $L_q$ are constant. In fact, \todo{details about behavior of Lq with Id}
+		\item
+			The motor efficiency model assumes that motor efficiency $\eta$ depends only on motor speed and electrical torque.
+	\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{bib/SimBALink}
