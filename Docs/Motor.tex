@@ -2,7 +2,12 @@
 \begin{document}
 
 \section{Block diagram}
-soon
+	\begin{figure}[h]
+			\centering
+			\includegraphics[width=\linewidth]{../Model/Powertrain/Motor/Documentation/Figures/Motor_block_diagram}
+			\caption{Motor model block diagram.}
+	\end{figure}
+	\FloatBarrier
 
 \section{Inputs and outputs}
 	\subsection{Inputs}
@@ -15,22 +20,28 @@ soon
 	\end{tabular}
 	
 	\subsection{Outputs}
-	\begin{tabular}{ r | c | l | l }
-		Signal						&	Symbol				&	MATLAB variable	&	Unit						\\\hline	
-		Motor torque					&	$\tau$				&	\texttt{tau}		&	N m				\\
-	\end{tabular}
+		\begin{tabular}{ r | c | l | l }
+			Signal						&	Symbol				&	MATLAB variable	&	Unit						\\\hline	
+			Motor torque					&	$\tau$				&	\texttt{tau}		&		N m				\\
+		\end{tabular}
 	
 \section{Background, rationale, modeling strategy}
 	The motor model has two main components. The torque-generation component is based on an electrical equivalent-circuit model and a 2D efficiency map derived from motor-specific testing. There is also a simple thermal model based on a constant thermal resistance.
 	
 	\subsection{Torque model}
-		The motor's electrical behavior can be represented using two equivalent circuits using the Park transformation \cite{Park1929}. The result of the transformation for a 3-phase permanent-magnet synchronous motor (PMSM) is the \textit{dq} motor model. Figure \todo{Add dq equivalent-circuit diagram} shows the constant-parameter \textit{dq} equivalent circuits.
+		The motor's electrical behavior can be represented using two equivalent circuits using the Park transformation \cite{Park1929}. The result of the transformation for a 3-phase permanent-magnet synchronous motor (PMSM) is the \textit{dq} motor model. Figure \ref{fig:Motor_equivalent_circuit} shows the constant-parameter \textit{dq} equivalent circuits.
 		
-		\missingfigure{dq model equivalent circuits}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\linewidth]{../Model/Powertrain/Motor/Documentation/Figures/Motor_equivalent_circuit}
+			\caption{Motor model - \textit{dq} equivalent circuits.}
+			\label{fig:Motor_equivalent_circuit}
+		\end{figure}
+		\FloatBarrier
 		
 		The motor parameters are assumed to be constant with respect to stator currents and temperatures.
 		
-		By the equivalent circuits in Figure \todo{dq equiv ckt}, the stator voltages $V_d$ and $V_q$ can be found:
+		By the equivalent circuits in Figure \ref{fig:Motor_equivalent_circuit}, the stator voltages $V_d$ and $V_q$ can be found:
 		
 		\begin{gather}
 			V_d		= R i_d + L_d \frac{ d i_d }{ d t } + \omega L_q i_q				\label{eqn:Vd_with_Vl}\\
