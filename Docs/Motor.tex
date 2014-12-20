@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\section{Block diagram}
+\subsection{Block diagram}
 	\begin{figure}[h]
 			\centering
 			\includegraphics[width=\linewidth]{Motor_block_diagram}
@@ -12,8 +12,9 @@
 	\end{figure}
 	\FloatBarrier
 
-\section{Inputs and outputs}
-	\subsection{Inputs}
+\subsection{Inputs and outputs}
+	\paragraph{Inputs} -
+	\\ 
 	\begin{tabular}{ r | c | l | l }
 		Signal						&	Symbol				&	MATLAB variable	&	Unit						\\\hline	
 		Stator current					&	$I_s$				&	\texttt{Is}			&	rms amps					\\
@@ -22,16 +23,17 @@
 		Motor speed					&	$\omega$			&	\texttt{omega}		&	rad/sec
 	\end{tabular}
 	
-	\subsection{Outputs}
+	\paragraph{Outputs} -
+	\\
 		\begin{tabular}{ r | c | l | l }
 			Signal						&	Symbol				&	MATLAB variable	&	Unit						\\\hline	
 			Motor torque					&	$\tau$				&	\texttt{tau}		&		N m				\\
 		\end{tabular}
 	
-\section{Background, rationale, modeling strategy}
+\subsection{Background, rationale, modeling strategy}
 	The motor model has two main components. The torque-generation component is based on an electrical equivalent-circuit model and a 2D efficiency map derived from motor-specific testing. There is also a simple thermal model based on a constant thermal resistance.
 	
-	\subsection{Torque model}
+	\paragraph{Torque model}
 		The motor's electrical behavior can be represented using two equivalent circuits using the Park transformation \cite{Park1929}. The result of the transformation for a 3-phase permanent-magnet synchronous motor (PMSM) is the \textit{dq} motor model. Figure \ref{fig:Motor_equivalent_circuit} shows the constant-parameter \textit{dq} equivalent circuits.
 		
 		\begin{figure}[h]
@@ -76,7 +78,7 @@
 			\tau	=	\eta(\tau_e, \omega) \times \tau_e
 		\end{equation}
 
-\section{Parameters}
+\subsection{Parameters}
 	
 	\renewcommand{\arraystretch}{1.5}
 	\begin{tabular}{ p{5cm} | c | l | l }
@@ -92,7 +94,7 @@
 	\end{tabular}
 
 
-\section{Assumptions}
+\subsection{Assumptions}
 	The motor electrical model is significantly simplified.
 	\begin{itemize}
 		\item 

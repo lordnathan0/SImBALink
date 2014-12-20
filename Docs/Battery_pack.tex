@@ -2,26 +2,25 @@
 
 \graphicspath{ {./Model/Powertrain/Battery_pack/Documentation/Figures/}{../Model/Powertrain/Battery_pack/Documentation/Figures/} }
 \begin{document}
-\section{Block diagram}
+\subsection{Block diagram}
 soon
 
-\section{Inputs and outputs}
-	\subsection{Inputs}
-	\todo{Add MATLAB symbols}
-	\begin{tabular}{ l | l | l  }
-		Input					&	Symbol		&	Unit		\\	\hline
-		DC current				&	$I_{dc}$		&	A		\\
+\subsection{Inputs and outputs}
+	\subsubsubsection{Inputs}
+\begin{tabular}{ r | c | l | l }
+		Signal						&	Symbol		&	MATLAB variable	&	Unit						\\\hline
+		DC current					&	$I_{dc}$		&	\texttt{Idc}		&	A		\\
 	\end{tabular}
 	
-	\subsection{Outputs}
-	\begin{tabular}{ l | l | l  }
-		Output					&	Symbol		&	Unit		\\	\hline
-		State of charge			&	SOC			&	\%		\\
-		Terminal voltage			&	$V_{dc}$		&	V		\\
+	\subsubsubsection{Outputs}
+\begin{tabular}{ r | c | l | l }
+		Signal						&	Symbol				&	MATLAB variable	&	Unit						\\\hline
+		State of charge				&	SOC					&	\texttt{SOC}		&	\%		\\
+		Terminal voltage				&	$V_{dc}$				&	\texttt{V}			&	V		\\
 	\end{tabular}
 	
-\section{Background, rationale, modeling strategy}
-	\subsection{Electrical model}
+\subsection{Background, rationale, modeling strategy}
+	\subsubsubsection{Electrical model}
 		Each battery cell is modeled as an equivalent circuit:
 		
 		\begin{figure}[h!]
@@ -46,11 +45,11 @@ soon
 		
 		For a series circuit composed of $n$ identical battery cells, the terminal voltage of the series circuit is $n \times V_{oc}$.
 		
-	\subsection{Thermal model}
+	\subsubsubsection{Thermal model}
 		The battery pack thermal model is not implemented. It is assumed that the battery open-circuit voltage has no temperature dependence.
 		
 
-\section{Parameters}
+\subsection{Parameters}
 	\begin{tabular}{ r | l | l | l }
 		Parameter				&	Symbol				&	MATLAB variable	&	Unit						\\	\hline	
 		Initial stored charge			&	$Q_0$				&	\texttt{Q\_0}		&	coulomb					\\
@@ -63,7 +62,7 @@ soon
 		Open-circuit voltage lookup: voltage data	&			&	\texttt{Voc.V}		& 	volt
 	\end{tabular}
 
-\section{Assumptions}
+\subsection{Assumptions}
 	This battery pack model assumes that:
 	
 	\begin{itemize}
