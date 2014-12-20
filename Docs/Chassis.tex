@@ -24,7 +24,7 @@ The forces have a notation of Longitudinal (long), Normal(n) , and Lateral (lat)
 		Chassis Forces			&	$F_c$		&	N[3]
 	\end{tabular}
 
-\subsubsection{Background, rationale, modeling strategy}
+\subsection{Background, rationale, modeling strategy}
 The Chassis is modeled point mass with drag.
 \begin{gather}
 		F_a = \frac{1}{2} \rho C_dAv^2 \\
@@ -35,19 +35,19 @@ The Chassis is modeled point mass with drag.
 		O_l = \arctan(\frac{v^2}{gR_c})
 \end{gather}
 
-\subsubsection{States}
+\subsection{States}
 	\begin{tabular}{ l | l | l  }
 		State					&	Symbol		&	Unit		\\	\hline
 		Distance				&	$d$			& 	m \\
 		Velocity 				&	$v$			&	m/s \\
 	\end{tabular}
-\subsubsection{Variables}
+\subsection{Variables}
 	\begin{tabular}{ l | l | l  }
 		Output					&	Symbol		&	Unit		\\	\hline
 		Drag Force				&	$F_a$		&  N
 						
 	\end{tabular}
-\subsubsection{Parameters}
+\subsection{Parameters}
 	\begin{tabular}{ l | l | l  }
 		Param.					&	Symbol		&	Unit		\\	\hline
 		Drag Area				&	$C_dA$		&	 $\frac{N}{rad/s}$ \\		
@@ -55,7 +55,7 @@ The Chassis is modeled point mass with drag.
 		Mass of Motorcycle		&	$m$			&  $kg$				
 	\end{tabular}
 
-\subsubsection{Assumptions}
+\subsection{Assumptions}
 \begin{itemize}
     \item The full weight of the motorcycle is always on the correct tire for breaking or acceleration. That is not a bad assumption because maximum braking or acceleration will happen at wheelie or stoppie when there is only one tire on the ground.
     \item Lean angle does not affect Aero Drag
@@ -63,7 +63,7 @@ The Chassis is modeled point mass with drag.
     \item lean angle is optimal lean angle given corner radius and speed
 \end{itemize}
 
-\section{Calibration}
+\subsection{Calibration}
 
 The model was calibrated against coastdown data using linear least squares. Both $C_dA$ and Rolling resistance values were found using the following equation.
 \begin{gather}
@@ -83,7 +83,7 @@ The figure above shows the calibrated value and the guess compared to data. The 
 
 
 
-\section{Validation}
+\subsection{Validation}
 
 First the Chassis model was validated by checking the lean angle and normal force by changing road gradient and corder radius. Both normal force and lean angle behave correctly
 

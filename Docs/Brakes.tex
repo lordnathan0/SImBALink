@@ -1,8 +1,6 @@
 \documentclass[../SimBALink.tex]{subfiles}
 \begin{document}
 
-\subsection{Brakes}
-
 \subsection{Inputs and outputs}
 	\subsubsection{Inputs}
 	\begin{tabular}{ l | l | l  }
@@ -17,21 +15,21 @@
 		Brake Force on Tire		&	$F_b$		&	N
 	\end{tabular}
 
-\subsubsection{Background, rationale, modeling strategy}
+\subsection{Background, rationale, modeling strategy}
 The brake is modeled as a friction force and a constant that converts $\beta$ to a force.
 		\begin{gather}
 			F_b = \mu_b \omega_t \beta k_b
 		\end{gather}
 
 
-\subsubsection{Variables}
+\subsection{Variables}
 	\begin{tabular}{ l | l | l  }
 		Var									&	Symbol		&	Unit		\\	\hline
 		Brake Coefficient of Friction		&	$\mu_b$		&	 $\frac{N}{rad/s}$ \\
 		Force Constant						&	$k_b$		&	 $\frac{N}{\%}$
 	\end{tabular}
 
-\subsubsection{Assumptions}
+\subsection{Assumptions}
 \begin{itemize}
   \item Brake percentage to friction force is linear
   \item The tire never locks

@@ -44,7 +44,7 @@
 	<key>Creator</key>
 	<string>Aaron Bonnell-Kangas</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1 0/72 in</string>
+	<string>1 0/72 in = 1.0000 in</string>
 	<key>GraphDocumentVersion</key>
 	<integer>8</integer>
 	<key>GraphicsList</key>
@@ -133,7 +133,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{478.73999, 254.99997}, {32, 17}}</string>
+			<string>{{488, 254.99994}, {32, 17}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -142,17 +142,6 @@
 			<string>Resize</string>
 			<key>ID</key>
 			<integer>64</integer>
-			<key>Line</key>
-			<dict>
-				<key>ID</key>
-				<integer>7</integer>
-				<key>Offset</key>
-				<real>1</real>
-				<key>Position</key>
-				<real>0.98132234811782837</real>
-				<key>RotationType</key>
-				<integer>0</integer>
-			</dict>
 			<key>Shape</key>
 			<string>Rectangle</string>
 			<key>Style</key>
@@ -178,7 +167,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs28 \cf0 Q}</string>
+\f0\fs28 \cf0 SOC}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -482,7 +471,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-11-20 22:05:25 +0000</string>
+	<string>2014-12-20 04:21:07 +0000</string>
 	<key>Modifier</key>
 	<string>Aaron Bonnell-Kangas</string>
 	<key>NotesVisible</key>

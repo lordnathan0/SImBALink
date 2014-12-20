@@ -24,16 +24,25 @@
 % Allow use of \paragraph for "subsubsubsection"
 \setcounter{secnumdepth}{4}
 
+% Only write TOC two levels deep
+\setcounter{tocdepth}{2}
+
 \begin{document}
 
-\begin{center}
+\title{SimBALink}
+\author{Aaron Bonnell-Kangas \\ Nathan Lord}
+\date{December 2014}
+\maketitle
 
+SimBALink is a motorcycle powertrain and longitudinal vehicle dynamics model. It is written in Simulink, with the goal of being modular and integrating calibration and validation functionality.
 
-\part*{SimBALink}
+This document describes the structure and the validation status of the model as of December, 2014. 
 
-\end{center}
+\tableofcontents
 
 \subfile{./Docs/Vehicle}
+
+\section{Environment}
 \subfile{./Docs/Environment}
 \subfile{./Docs/Powertrain}
 

@@ -3,24 +3,28 @@
 \graphicspath{ {./Model/Powertrain/Battery_pack/Documentation/Figures/}{../Model/Powertrain/Battery_pack/Documentation/Figures/} }
 \begin{document}
 \subsection{Block diagram}
-soon
+		\begin{figure}[h!]
+				\centering
+				\includegraphics[width=4in]{Battery_pack_block_diagram}
+				\caption{Battery pack block diagram}
+		\end{figure}
 
 \subsection{Inputs and outputs}
-	\subsubsubsection{Inputs}
-\begin{tabular}{ r | c | l | l }
-		Signal						&	Symbol		&	MATLAB variable	&	Unit						\\\hline
-		DC current					&	$I_{dc}$		&	\texttt{Idc}		&	A		\\
-	\end{tabular}
+	\subsubsection{Inputs}
+		\begin{tabular}{ r | c | l | l }
+			Signal						&	Symbol		&	MATLAB variable	&	Unit						\\\hline
+			DC current					&	$I_{dc}$		&	\texttt{Idc}		&	A		\\
+		\end{tabular}
 	
-	\subsubsubsection{Outputs}
-\begin{tabular}{ r | c | l | l }
+	\subsubsection{Outputs}
+		\begin{tabular}{ r | c | l | l }
 		Signal						&	Symbol				&	MATLAB variable	&	Unit						\\\hline
 		State of charge				&	SOC					&	\texttt{SOC}		&	\%		\\
 		Terminal voltage				&	$V_{dc}$				&	\texttt{V}			&	V		\\
 	\end{tabular}
 	
 \subsection{Background, rationale, modeling strategy}
-	\subsubsubsection{Electrical model}
+	\subsubsection{Electrical model}
 		Each battery cell is modeled as an equivalent circuit:
 		
 		\begin{figure}[h!]
@@ -45,7 +49,7 @@ soon
 		
 		For a series circuit composed of $n$ identical battery cells, the terminal voltage of the series circuit is $n \times V_{oc}$.
 		
-	\subsubsubsection{Thermal model}
+	\subsubsection{Thermal model}
 		The battery pack thermal model is not implemented. It is assumed that the battery open-circuit voltage has no temperature dependence.
 		
 
