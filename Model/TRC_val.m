@@ -1,7 +1,9 @@
-%load CoastDownTimeSeries
+load CoastDownTimeSeries
 load('228hv_tau_coastdown.mat')
 
 datastart = 1300;
+addpath(genpath('/Powertrain'))
+addpath(genpath('/Vehicle'))
 
 close all
 starttime = ts{1}.Data(datastart);
@@ -18,6 +20,7 @@ sample_tau.Time = sample_tau.Time - sample_tau.Time(1);
 rpm_sample = getsampleusingtime(rpm,starttime,endtime);
 rpm_sample.Time = rpm_sample.Time - rpm_sample.Time(1);
 
+load_system('Chassis')
 
 chas = get_param('Chassis','ModelWorkspace');
 gear = get_param('Gear_Chain','ModelWorkspace');
