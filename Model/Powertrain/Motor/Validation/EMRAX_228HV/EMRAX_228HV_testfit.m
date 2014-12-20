@@ -19,7 +19,7 @@ Is.Id.Time = Is.Id.Time - startTime;
 
 Vs.Vq	=	ts{36};		%Vq
 Vs.Vq.Time = Vs.Vq.Time - startTime;
-Vs.Vd	=	ts{33};		%Vd
+Vs.Vd	=	ts{33}*(-1);		%Vd
 Vs.Vd.Time = Vs.Vd.Time - startTime;
 
 omega		=	ts{34}*(pi/60)*(-1);	% motor speed (rpm -> rad/sec)
@@ -29,6 +29,8 @@ omega.Time	= omega.Time - startTime;
 load_system(fullfile( '..', '..', 'Motor'));
 mws = get_param(bdroot, 'modelworkspace');
 
+% temporarily change model data source
+mws.FileName = fullfile('..', '..', 'Data', 'Configurations', 'EMRAX_228HV.mat');
 mws.reload();		% reload workspace from source file
 
 % set specified values in model workspace
@@ -81,3 +83,27 @@ hold off;
 
 saveas(gcf, 'Figures/torque.png');
 saveas(gcf, 'Figures/torque.eps', 'epsc')
+
+figure(3)
+subplot(211)
+hold on;
+plot(Vs.Vq);
+plot(vq_sim, 'r');
+legend('Truth','Sim');
+title('Vq: simulation results vs. truth');
+xlabel('Time (sec)');
+ylabel('Vq: q-axis terminal voltage');
+hold off;
+
+subplot(212)
+hold on;
+plot(Vs.Vd);
+plot(vd_sim, 'r');
+legend('Truth','Sim');
+title('Vd: simulation results vs. truth');
+xlabel('Time (sec)');
+ylabel('Vd: d-axis terminal voltage');
+hold off;
+
+saveas(gcf, 'Figures/Vq_Vd.png');
+saveas(gcf, 'Figures/Vq_Vd.eps', 'epsc');
