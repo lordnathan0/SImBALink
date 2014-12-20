@@ -30,14 +30,38 @@
 				\begin{tabular}{c | l | c | c}
 					Symbol		&	Parameter			&	Initial guess value	&	Calibrated value	\\
 					\hline
-					$\phi$		&	Motor flux linkage		&	1 V rad/sec	 	&	24.5 m$\Omega$
+					$\phi$		&	Motor flux linkage		&	1 V rad/sec	 	&	-1.051 V rad/sec
 				\end{tabular}
 			\end{table}
 			
-			The capacity parameter was included as a calibrated parameter because initial tests with the model displayed what appeared to be a scaling error in the model's open-circuit voltage term.
+			Since there was no calibration data available that included a motor torque output, the model was calibrated against a subset of the experimental data from RW-2x coastdown testing (the same dataset used for validating the overall vehicle model). The coastdown test data was chosen because it covered a wide range of vehicle speeds and motor currents.
+			
+			\begin{figure}[h]
+				\centering
+				\includegraphics[width=5in]{../Model/Powertrain/Motor/Validation/EMRAX_228HV/Figures/228HV_coastdown_calibration_data}
+				\caption{Coastdown dataset used for $\phi$ calibration.}
+			\end{figure}
+			\FloatBarrier
 			
 	\subsection{Model validation and quality of fit}
-		insert insightful content here
+		The model was validated using the full coastdown dataset from RW-2x vehicle testing. Motor output torque was not directly measured during this testing, so the validation focused on accurate prediction of the motor equivalent-circuit voltages $V_d$ and $V_q$. 
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\linewidth]{../Model/Powertrain/Motor/Validation/EMRAX_228HV/Figures/Vq_Vd}
+			\caption{Motor model performance: simulated $V_q$, $V_d$ vs. measured data.}
+		\end{figure}
+		\FloatBarrier
+		
+		The model performance for $V_q$ is very good, even during transients. 
+		
+		The model does not predict $V_d$ well. Some possible sources of this error include:
+		
+		\begin{itemize}
+			\item		Large applied voltages by the motor controller in an attempt to control for $I_d = 0$
+			\item		Larger than expected coupling between the d- and q-axis circuits
+			\item		Larger than expected $\frac{d i_d}{d t}$ or $L_d$
+		\end{itemize}
 		
 		
 \end{document}
