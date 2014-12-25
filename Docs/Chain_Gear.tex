@@ -1,37 +1,37 @@
 \documentclass[../SimBALink.tex]{subfiles}
 \begin{document}
 
-\subsection{Gearing and Chain} This system models the gear and chain in such a way to allow for wheel slip. 
+This system models the gear and chain in such a way to allow for wheel slip. 
 
 \subsection{Inputs and outputs}
-	\subsubsection{Inputs}
+	\paragraph{Inputs}
 	\begin{tabular}{ l | l | l  }
 		Input					&	Symbol		&	Unit		\\	\hline
 		Motor Torque			& 	$\tau_m$ 		& Nm \\
 		Tire Torque				&	$\tau_t$	&	Nm
 	\end{tabular}
 	
-	\subsubsection{Outputs}
+	\paragraph{Outputs}
 	\begin{tabular}{ l | l | l  }
 		Output					&	Symbol		&	Unit		\\	\hline
 		Tire Velocity		&	$\omega_t$		&	rad/s \\
 		Gear Torque			&	$\tau_g$		& Nm
 	\end{tabular}
 
-\subsubsection{Background, rationale, modeling strategy}
+\subsection{Background, rationale, modeling strategy}
 The tire, chain, gear, and motor are modeled as a lumped inertia that is accelerated by the motor torque and tire torque(modeled as a load). The chain is modeled lossey through an efficiency map. Gearing is modeled as a ratio that linearly changes motor torque to gear torque. This method of modeling allows for wheel slip down the line.
 		\begin{gather}
 		\dot{\omega_t} = \frac{\tau_g - \tau_t}{J_m + J_g + J_t + J_c} \\
 		\tau_g = \frac{\tau_m \eta_c (\omega_t)}{R_g}
 		\end{gather}
 
-\subsubsection{States}
+\subsection{States}
 	\begin{tabular}{ l | l | l  }
 		State					&	Symbol		&	Unit		\\	\hline
 		Tire Velocity 			&	$\omega_t$	&	rad/s
 	\end{tabular}
 
-\subsubsection{Parameters}
+\subsection{Parameters}
 	\begin{tabular}{ l | l | l  }
 		Parameters					&	Symbol		&	Unit		\\	\hline
 		Motor inertia		&	$J_m$		&	 $kg*m^2$ \\ 
@@ -41,7 +41,7 @@ The tire, chain, gear, and motor are modeled as a lumped inertia that is acceler
 		Gear Ratio			&	$R_g$		&	$\frac{\tau_g}{\tau_m}$
 	\end{tabular}
 	
-\subsubsection{Functions}
+\subsection{Functions}
 $\eta_c(\omega_t)$ \\
 	\begin{tabular}{ l | l | l | l }
 		Type				& Description		&	Symbol		&	Unit		\\	\hline
@@ -57,7 +57,7 @@ The function is modeled as a look up table following the curve below described i
   \caption{Estimated Chain Efficiency}
 \end{figure}
 
-\subsubsection{Assumptions}
+\subsection{Assumptions}
 \begin{itemize}
   \item The chain and gearing is rigid (no chain/gear dynamics)
   \item Chain efficiency is only a function of wheel speed
@@ -70,8 +70,8 @@ The model was subjected to a motor torque of 10 and an increasing tire torque. T
 
 \begin{figure}[H]
 \center
-  \includegraphics[scale=.75]{gear_val_lossy_chain}
-  \includegraphics[scale=.75]{gear_val_spin_up}
+  \includegraphics[scale=.5]{gear_val_lossy_chain}
+  \includegraphics[scale=.5]{gear_val_spin_up}
   \caption{Gear and Chain Validation}
 \end{figure}
 

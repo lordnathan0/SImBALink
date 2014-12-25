@@ -1,7 +1,7 @@
 \documentclass[../SimBALink.tex]{subfiles}
 \begin{document}
 
-\section{Environment} This system models the environment of the motorcycle is riding in.
+This system models the environment of the motorcycle is riding in.
 
 Force directions are defined as longitudinal(long), lateral(lat), and normal(n). Longitudinal is along the direction of the motorcycle (when moving straight). Lateral is orthogonal to Longitudinal axis. Normal 3-D orthogonal to lateral and longitudinal, in general the axis to the road on no incline.
 
@@ -23,7 +23,7 @@ Force directions are defined as longitudinal(long), lateral(lat), and normal(n).
 		Corner Radius 						&	$R_c$		& $m$
 	\end{tabular}
 
-\subsubsection{Background, rationale, modeling strategy}
+\subsection{Background, rationale, modeling strategy}
 The Environment only models air density, air temperature, and road gradient.
 	\begin{gather}
 		\theta_r  = \arctan\left(\frac{\frac{d}{dt} h(d)}{\frac{d}{dt} d}\right) \\
@@ -31,7 +31,7 @@ The Environment only models air density, air temperature, and road gradient.
 		P = P_0 \left( 1 - \frac{L h(d)}{T_0} \right)^{\frac{gM}{RL}}\\
 		\rho = \frac{PM}{1000RT}  
 \end{gather}
-\subsubsection{Parameters}
+\subsection{Parameters}
 	\begin{tabular}{ l | l | l  }
 		Parameter					&	Symbol		&	Unit		\\	\hline
 		Temperature Lapse		&	$L$			&	 $K/m$ \\
@@ -55,20 +55,20 @@ The Environment only models air density, air temperature, and road gradient.
 		Input 				& Distance Travel	&	$d$  		& m		\\
 		Output 				& Corner Radius 	&	n/a			&  m
 	\end{tabular} \\
-\subsubsection{Assumptions}
+\subsection{Assumptions}
 \begin{itemize}
   \item The air is dry 
   \item Temperature lapse rate right is correct (no inversion)
 \end{itemize}
 
-\section{Validation}
+\subsection{Validation}
 
 To validate the road gradient the Isle of Man altitude map was supplied to the model and the road gradient was plotted. To validate air density data from Colorado was compared to a simulated data.
 
 \begin{figure}[H]
 \center
- \includegraphics[scale=1]{env_val_grad}
- \includegraphics[scale=1]{env_val_rho}
+ \includegraphics[scale=0.75]{env_val_grad}
+ \includegraphics[scale=0.75]{env_val_rho}
   \caption{Environment Validation}
 \end{figure}
 

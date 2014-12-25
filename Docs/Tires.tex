@@ -1,7 +1,6 @@
 \documentclass[../SimBALink.tex]{subfiles}
 \begin{document}
 
-\subsection{Tires}
 \subsection{Inputs and outputs}
 	\subsubsection{Inputs}
 	\begin{tabular}{ l | l | l  }
@@ -24,7 +23,7 @@
 		Max Force 				&	$F_{max}$		&	N \\
 	\end{tabular}
 
-\subsubsection{Background, rationale, modeling strategy} The tire is modeled in three parts, rolling resistance, Load and Torque, and Traction Limiting. Force directions are defined as longitudinal(long), lateral(lat), and normal(n). Longitudinal is along the direction of the motorcycle (when moving straight). Lateral is orthogonal to Longitudinal axis. Normal 3-D orthogonal to lateral and longitudinal, in general the axis to the road on no incline.
+\subsection{Background, rationale, modeling strategy} The tire is modeled in three parts, rolling resistance, Load and Torque, and Traction Limiting. Force directions are defined as longitudinal(long), lateral(lat), and normal(n). Longitudinal is along the direction of the motorcycle (when moving straight). Lateral is orthogonal to Longitudinal axis. Normal 3-D orthogonal to lateral and longitudinal, in general the axis to the road on no incline.
 
 The tire models slip which in turn is used to calculate the force the tire exerts on to the motorcycle. Wheel slip occurs when because the the tire does not exert a force on to the vehicle until there is some wheel slip, thus causing the tire to spin up causing wheel slip.
 
@@ -57,14 +56,14 @@ The tire coefficient ($\mu_{t,gnd}$) is modeled using the "Magic Formula" as sho
   \caption{Magic Formula }
 \end{figure}
 
-\subsubsection{Variables}
+\subsection{Variables}
 	\begin{tabular}{ l | l | l  }
 		Var					&	Symbol		&	Unit		\\	\hline
 		Rolling Constant	&	$K_t$		& 	n/a \\
 		Tire coefficient 	& $\mu_{t,gnd}$ &	n/a \\
 		Force 				&	$F$	&	N \\
 	\end{tabular}
-\subsubsection{Parameters}
+\subsection{Parameters}
 	\begin{tabular}{ l | l | l  }
 		Param.					&	Symbol		&	Unit		\\	\hline
 		Tire Pressure		&	$p_t$		&	 $bar$ \\
@@ -72,7 +71,7 @@ The tire coefficient ($\mu_{t,gnd}$) is modeled using the "Magic Formula" as sho
 		\textbf{Magic Formula}\\		&	$A_{\kappa},B_{\kappa},C_{\kappa},D_{\kappa}$		&	 n/a \\
 	\end{tabular}
 	
-\subsubsection{Function}
+\subsection{Function}
 $r_t(\theta_l)$ \\
 	\begin{tabular}{ l | l | l | l }
 		Type				& Description		&	Symbol		&	Unit		\\	\hline
@@ -80,7 +79,7 @@ $r_t(\theta_l)$ \\
 		Output 				& Tire Radius		&	n/a			&	m
 	\end{tabular} \\
 
-\subsubsection{Assumptions}
+\subsection{Assumptions}
 \begin{itemize}
   \item Maximum acceleration force should also depend on lateral forces on the vehicle. However this is not modeled because it requires modeling of high-side and low-side dynamics. The Rider model should control for a safe operating area of the motorcycle to compensate for this assumption. 
   \item No tire deformation
@@ -88,7 +87,7 @@ $r_t(\theta_l)$ \\
   \item No change in rolling resistance with lean angle 
 \end{itemize}
 
-\section{Calibration}
+\subsection{Calibration}
 The magic formula was calibrated using non-linear least squares to data collected from BikeSim. The calibration was fit to data for a normal force of 400 Newtons.
 
 \begin{figure}[H]
@@ -109,7 +108,7 @@ The fit was then compared to other normal forces.
 
 The fit is not longer perfect, it can be seen the tire coefficient changes with normal force but it is not being modeled.
 
-\section{Validation}
+\subsection{Validation}
 
 The tire model was swept through different slip speeds to validate correct shapes. All validation looks correct but multiple parts need to be connected to check for proper dynamics. 
 

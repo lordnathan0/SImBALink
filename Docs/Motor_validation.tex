@@ -3,12 +3,10 @@
 
 \begin{document}
 
-\section{Motor model performance}
-	xxx
-	\subsection{Calibration}
-		dafsd
-		
-		\subsubsection{Efficiency model}
+\subsection{Motor model performance}
+	The motor model was calibrated against experimental data from vehicle testing in 2014. Although no torque data was available to validate the motor torque model, intermediary signals were measured and validated.
+	\subsubsection{Calibration}
+		\paragraph{Efficiency model}
 			The motor efficiency model was derived from an efficiency plot provided by the manufacturer. 
 			
 			\begin{figure}[h]
@@ -20,7 +18,7 @@
 			
 			The efficiency plot is based on variables which are convenient to measure using an engine dynamometer and a power inverter. In future testing, the efficiency function will be derived from steady-state experimental data.
 			
-		\subsubsection{Equivalent-circuit parameters}
+		\paragraph{Equivalent-circuit parameters}
 			The motor manufacturer specifies values for $L_d$, $L_q$, and $R$. Since the model performance was good without additional calibration of these values, they were used unchanged.
 			
 			The only equivalent-circuit parameter that was calibrated in the model was $\phi$, the permanent-magnet flux linkage.
@@ -45,7 +43,7 @@
 			\end{figure}
 			\FloatBarrier
 			
-	\subsection{Model validation and quality of fit}
+	\subsubsection{Model validation and quality of fit}
 		The model was validated using the full coastdown dataset from RW-2x vehicle testing. Motor output torque was not directly measured during this testing, so the validation focused on accurate prediction of the motor equivalent-circuit voltages $V_d$ and $V_q$. 
 		
 		\begin{figure}[h]
