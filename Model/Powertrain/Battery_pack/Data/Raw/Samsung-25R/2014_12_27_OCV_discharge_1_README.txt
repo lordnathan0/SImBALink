@@ -1,0 +1,1 @@
+.1C discharge done on PL8 after ~24 hours of charging and balancing cells to 4.21V
