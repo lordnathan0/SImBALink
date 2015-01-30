@@ -6,15 +6,15 @@ function [sse, r2] = test_model_performance(cell_name)
 truth_dir = cell_name;
 
 % Name of the truth file to test against
-%truth_file = 'PikesPeak_discharge';
-truth_file = 'Pulse_Discharge_Test';
+truth_file = 'PikesPeak_discharge';
+%truth_file = 'Pulse_Discharge_Test';
 
 truth = fullfile('..', 'Data', 'Truth', truth_dir, truth_file);
 
 % Get timeseries voltage and current data for comparison
 load( truth );
-Idc = timeseries( Current, Time );
-V	= timeseries( Voltage, Time );
+%Idc = timeseries( Current, Time );
+%V	= timeseries( Voltage, Time );
 
 load_system('Battery_pack');
 mws = get_param(bdroot, 'modelworkspace');
