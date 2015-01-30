@@ -19,8 +19,9 @@ load( truth );
 load_system('Battery_pack');
 mws = get_param(bdroot, 'modelworkspace');
 
+% Is this where we want to keep the cell MATfile ?
 % temporary
-mws.FileName = fullfile('..', 'Data', 'Battery pack.mat');
+mws.FileName = fullfile('..', 'Data', [cell_name '.mat']);
 mws.reload();		% reload workspace from source file
 mws.assignin('Idc',Idc);
 

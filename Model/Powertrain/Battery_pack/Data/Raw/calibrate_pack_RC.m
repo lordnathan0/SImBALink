@@ -13,8 +13,11 @@ model_path = fullfile( '..', '..', 'Battery_pack' );
 load_system(model_path);
 mws = get_param(bdroot, 'modelworkspace');
 
+% FIXME: need to choose model data source dynamically - maybe we should
+% have a global for this?
+
 % change model data source path (temporary - we won't save this)
-mws.FileName = fullfile('..', 'Battery pack.mat');
+mws.FileName = fullfile('..', 'Samsung-25R.mat');
 mws.reload();		% reload workspace from source file
 
 % set specified values in model workspace
