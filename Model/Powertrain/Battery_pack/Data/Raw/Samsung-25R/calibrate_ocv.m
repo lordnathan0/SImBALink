@@ -25,9 +25,16 @@ Capacity	= max( abs(Ah) );								% observed cell capacity, Ah
 %TODO: Should average all of the cells in the datafile instead of picking
 %cell 4
 
+%TODO: Need to fix data so that SOC breakpoints do not repeat (breaks
+%lookup tables)
+
 Voc.SOC		= flip( (Capacity-Ah)./Capacity )';
 Voc.V		= flip( cellData{4}.Data )';
 Q_0			= Capacity * 3600;						% Ah -> C
+
+% Temporary - quick fix
+Voc.SOC		= Voc.SOC(1:end-3);
+Voc.V		= Voc.V(1:end-3);
 
 % TEMPORARY - SHOULD LOAD FROM FILE
 T_0			= 20;
