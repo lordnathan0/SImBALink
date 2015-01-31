@@ -37,7 +37,7 @@ simulated.Voltage = timeseries (outValues(:,2), outTime);
 
 %% metrics
 
-sse = V - resample(simulated.Voltage, V.time);		% resample simulation timeseries to truth indices
+sse = simulated.Voltage - resample(V, simulated.Voltage.time);		% resample truth timeseries to sim indices (likely that sim is more frequent, minimizing interpolation error)
 sse = sum((sse.Data).^2);
 
 avg = mean(simulated.Voltage.Data);
