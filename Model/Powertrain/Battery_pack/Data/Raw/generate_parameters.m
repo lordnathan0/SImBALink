@@ -45,6 +45,6 @@ info = ['Generated ' date];
 save(output, 'Voc', 'Q_0', 'T_0')
 
 %%% Resistance calibration
-[R0 R1 C1] = calibrate_RC();
+[R0 R1 C1 capacity] = calibrate_RC();
 
 save(output, 'R0', 'R1', 'C1', '-append');

@@ -35,7 +35,7 @@ yout = out.get('yout');
 tout = out.get('tout');
 
 outV = timeseries(yout(:,2),tout);		% Timeseries of simulation output
-sse = V - resample(outV,V.time);		% resample simulation timeseries to truth indices
+sse = outV - resample(V,outV.time);		% resample simulation timeseries to truth indices
 sse = sum((sse.Data).^2);	
 
 error = sse;							% return SSE
