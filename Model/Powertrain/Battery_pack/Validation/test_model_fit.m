@@ -46,7 +46,8 @@ sst = sum( (simulated.Voltage.Data - avg).^2 );
 r2 = 1 - sse/sst;
 
 %% plot
-figure
+figure(5)
+clf;
 
 hold on;
 plot(simulated.Voltage);
@@ -62,4 +63,40 @@ hold off;
 
 saveas(gcf, ['Figures/ModelAgreement_' cell_name '.eps'], 'epsc');
 saveas(gcf, ['Figures/ModelAgreement_' cell_name '.png']);
+
+% "pack voltage"
+figure(6)
+clf;
+
+ax1 = subplot(211);
+hold on;
+plot(simulated.Voltage*108);
+plot(V*108, 'r');
+title(['Pack voltage: model and truth vs. time, ' cell_name]);
+xlabel('Time (sec)');
+ylabel('Pack voltage (V)');
+legend('Model', 'Truth');
+
+annotation('textbox', [0.15,0.55,0.1,0.1], 'String', {['SSE: ' num2str(sse)], ['R^2: ' num2str(r2) ]});
+
+xlim([6100 6800]);
+
+ax2 = subplot(212);
+hold on;
+plot((simulated.Voltage - resample(V, simulated.Voltage.time))*108, 'LineWidth', 1.5);
+title( 'Pack voltage error (positive: overestimation)' );
+ylabel( 'Voltage error (V)');
+grid on;
+
+% "Acceptable error" boundaries at +- 5 V
+line([min(simulated.Voltage.Time) max(simulated.Voltage.Time)], [5 5], 'LineWidth', 2, 'Color', 'Red');
+line([min(simulated.Voltage.Time) max(simulated.Voltage.Time)], [-5 -5], 'LineWidth', 2, 'Color', 'Red');
+hold off;
+
+linkaxes([ax1 ax2], 'x');
+
+hold off;
+
+saveas(gcf, ['Figures/ModelAgreement_packvoltage' cell_name '.eps'], 'epsc');
+saveas(gcf, ['Figures/ModelAgreement_packvoltage' cell_name '.png']);
 
