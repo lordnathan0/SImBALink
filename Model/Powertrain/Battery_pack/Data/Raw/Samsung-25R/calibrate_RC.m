@@ -7,6 +7,11 @@ function [R0, R1, C1, Capacity] = calibrate_RC()
 display 'Calibrating resistances...'
 [Idc, V] = read_maccor( 'Curr_Cell8B_Res_111314_2 - 008.csv' );
 
+% Drop the first 10k points because they probably have a charge cycle in
+% them :|
+Idc			= delsample( Idc, 'Index', [1:10000] );
+V			= delsample( V, 'Index', [1:10000] );
+
 % starting points for calibration
 guess.R0 = 0.025;
 guess.R1 = 0.01;
