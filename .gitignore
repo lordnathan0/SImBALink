@@ -7,3 +7,6 @@ Docs/*.pdf
 !Docs/Bib/*.pdf
 *.autosave
 *.original
+
+# Simulink Model Advisor files
+**slprj/

@@ -13,8 +13,11 @@ model_path = fullfile( '..', '..', 'Battery_pack' );
 load_system(model_path);
 mws = get_param(bdroot, 'modelworkspace');
 
+% FIXME: need to choose model data source dynamically - maybe we should
+% have a global for this?
+
 % change model data source path (temporary - we won't save this)
-mws.FileName = fullfile('..', 'Battery pack.mat');
+mws.FileName = fullfile('..', 'Samsung-25R.mat');
 mws.reload();		% reload workspace from source file
 
 % set specified values in model workspace
@@ -32,7 +35,7 @@ yout = out.get('yout');
 tout = out.get('tout');
 
 outV = timeseries(yout(:,2),tout);		% Timeseries of simulation output
-sse = V - resample(outV,V.time);		% resample simulation timeseries to truth indices
+sse = outV - resample(V,outV.time);		% resample simulation timeseries to truth indices
 sse = sum((sse.Data).^2);	
 
 error = sse;							% return SSE
