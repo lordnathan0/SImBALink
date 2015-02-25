@@ -121,4 +121,4 @@ rb.Min = [];
 rb.Max = [];
 rb.DocUnits = 'm';
 
-save('RW3_Tires.mat','rb','pt','Ek','Ck','Bk','Ak', 'Dk','At','Bt','Ct');
+save('RW3_Tires.mat','rb','pt','Ek','Ck','Bk', 'Dk','At','Bt','Ct');

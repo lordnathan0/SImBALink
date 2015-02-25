@@ -56,6 +56,6 @@ SpeedProfile_y.Min = [];
 SpeedProfile_y.Max = [];
 SpeedProfile_y.DocUnits = 'm/s';
 
-save('RW3_Rider_PI.mat','SpeedProfile_y','SpeedProfile_x','Rider_P','Rider_I');
+save('Pikes_Peak_Rider_PI.mat','SpeedProfile_y','SpeedProfile_x','Rider_P','Rider_I');
 
 

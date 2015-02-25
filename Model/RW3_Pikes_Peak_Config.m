@@ -30,7 +30,7 @@ load_system('Tires');
 Tires = get_param(bdroot, 'modelworkspace');
 %% Load Correct Config
 %run('Powertrain/Battery_pack/Data/Raw/RW3_generate_parameters.m')
-Battery.FileName = 'Powertrain/Battery_pack/Data/RW3 Battery pack.mat' ;
+%Battery.FileName = 'Powertrain/Battery_pack/Data/RW3 Battery pack.mat' ;
 Battery.reload();		% reload workspace from source file
 
 run('Vehicle/Brakes/Data/RW3_generate_parameters.m')
@@ -53,17 +53,18 @@ Gear.FileName = 'Vehicle/Gear_Chain/Data/RW3_Gear.mat' ;
 Gear.reload();		% reload workspace from source file
 
 %needs to be corrected
-run('Powertrain/Motor/Data/RW3_generate_parameters.m')
-Motor.FileName = 'Powertrain/Motor/Data/RW3_Motor.mat' ;
+%run('Powertrain/Motor/Data/RW3_generate_parameters.m')
+%Motor.FileName = 'Powertrain/Motor/Data/RW3_Motor.mat' ;
 Motor.reload();		% reload workspace from source file
 
 %needs to be corrected
-run('Powertrain/Motor_controller/Data/RW3_generate_parameters.m')
-MotorController.FileName = 'Powertrain/Motor_controller/Data/RW3_MotorController.mat' ;
+%run('Powertrain/Motor_controller/Data/RW3_generate_parameters.m')
+%MotorController.FileName = 'Powertrain/Motor_controller/Data/RW3_MotorController.mat' ;
 MotorController.reload();		% reload workspace from source file
 
-run('Rider/RW3_generate_parameters.m')
-Rider.FileName = 'Rider/RW3_Rider_PI.mat' ;
+%needs to be corrected
+run('Rider/Pikes_Peak_generate_parameters.m')
+Rider.FileName = 'Rider/Pikes_Peak_Rider_PI.mat' ;
 Rider.reload();		% reload workspace from source file
 
 run('Vehicle/Tires/Data/RW3_generate_parameters.m')
