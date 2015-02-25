@@ -96,7 +96,7 @@ T0.Max = [];
 T0.DocUnits = 'K';
 
 altx = Simulink.Parameter;
-altx.Value = 0;
+altx.Value = [0 1000];
 altx.CoderInfo.StorageClass = 'Auto';
 altx.CoderInfo.Alias = '';
 altx.CoderInfo.Alignment = -1;
@@ -109,7 +109,7 @@ altx.Max = [];
 altx.DocUnits = 'm';
 
 alty = Simulink.Parameter;
-alty.Value = 0;
+alty.Value = [1 1];
 alty.CoderInfo.StorageClass = 'Auto';
 alty.CoderInfo.Alias = '';
 alty.CoderInfo.Alignment = -1;
