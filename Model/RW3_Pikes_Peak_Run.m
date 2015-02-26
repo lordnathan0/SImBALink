@@ -6,6 +6,7 @@
 %% Make Changes to the Config
 % other values can be changed by looking in the documentation
 assignin(Gear,'Rg',1); %change Gear ratio
+assignin(Env,'T0',300); %Update sea level tempurature to be correct
 
 %% Run simuilation
 

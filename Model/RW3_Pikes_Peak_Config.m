@@ -37,12 +37,11 @@ run('Vehicle/Brakes/Data/RW3_generate_parameters.m')
 Brakes.FileName = 'Vehicle/Brakes/Data/RW3_Brakes.mat' ;
 Brakes.reload();		% reload workspace from source file
 
-%needs to be corrected
 run('Vehicle/Chassis/Data/RW3_generate_parameters.m')
 Chassis.FileName = 'Vehicle/Chassis/Data/RW3_Chassis.mat' ;
 Chassis.reload();		% reload workspace from source file
 
-%needs to be corrected
+
 run('Environment/Data/Pikes_Peak_generate_parameters.m')
 Env.FileName = 'Environment/Data/Pikes_Peak_Environment.mat' ;
 Env.reload();		% reload workspace from source file
