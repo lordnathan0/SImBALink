@@ -18,6 +18,8 @@ assignin(PP,'D_max',1); %set max distance
 
 sim('Pikes_Peak',time);
 
+Pikes_Peak_Data = Dataset2Ts(logsout);
+
 %%
 figure
 plot(Pikes_Peak_Data.Velocity);
