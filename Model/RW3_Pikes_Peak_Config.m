@@ -12,8 +12,8 @@ addpath('Vehicle/Tires');
 %% Load systems
 load_system('Battery_pack');
 Battery = get_param('Battery_pack', 'modelworkspace');
-load_system('Rider_PI');
-Rider = get_param('Rider_PI', 'modelworkspace');
+load_system('Rider_PID');
+Rider = get_param('Rider_PID', 'modelworkspace');
 load_system('Environment');
 Env = get_param('Environment', 'modelworkspace');
 load_system('Motor');
@@ -71,7 +71,7 @@ MotorController.reload();		% reload workspace from source file
 %needs to be corrected
 run('Rider/Pikes_Peak_generate_parameters.m')
 FileName.Rider = Rider.FileName;
-Rider.FileName = 'Rider/Pikes_Peak_Rider_PI.mat' ;
+Rider.FileName = 'Rider/Pikes_Peak_Rider_PID.mat' ;
 Rider.reload();		% reload workspace from source file
 
 run('Vehicle/Tires/Data/RW3_generate_parameters.m')

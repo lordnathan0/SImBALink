@@ -1,7 +1,7 @@
 
                                  
 Rider_I = Simulink.Parameter;
-Rider_I.Value = 0.1;
+Rider_I.Value = 0;
 Rider_I.CoderInfo.StorageClass = 'Auto';
 Rider_I.CoderInfo.Alias = '';
 Rider_I.CoderInfo.Alignment = -1;
@@ -14,7 +14,7 @@ Rider_I.Max = [];
 Rider_I.DocUnits = 'nan';
 
 Rider_P = Simulink.Parameter;
-Rider_P.Value = 0.1;
+Rider_P.Value = 100;
 Rider_P.CoderInfo.StorageClass = 'Auto';
 Rider_P.CoderInfo.Alias = '';
 Rider_P.CoderInfo.Alignment = -1;
@@ -25,6 +25,19 @@ Rider_P.DataType = 'auto';
 Rider_P.Min = [];
 Rider_P.Max = [];
 Rider_P.DocUnits = 'nan';
+
+Rider_D = Simulink.Parameter;
+Rider_D.Value = 1;
+Rider_D.CoderInfo.StorageClass = 'Auto';
+Rider_D.CoderInfo.Alias = '';
+Rider_D.CoderInfo.Alignment = -1;
+Rider_D.CoderInfo.CustomStorageClass = 'Default';
+Rider_D.CoderInfo.CustomAttributes.ConcurrentAccess = false;
+Rider_D.Description = 'Proportional Control Constant';
+Rider_D.DataType = 'auto';
+Rider_D.Min = [];
+Rider_D.Max = [];
+Rider_D.DocUnits = 'nan';
 
 load('least_square_cdts_11_10.mat')
 I_nonzero = find(diff(distance) ~= 0);
@@ -55,6 +68,6 @@ SpeedProfile_y.Min = [];
 SpeedProfile_y.Max = [];
 SpeedProfile_y.DocUnits = 'm/s';
 
-save('Pikes_Peak_Rider_PI.mat','SpeedProfile_y','SpeedProfile_x','Rider_P','Rider_I');
+save('Pikes_Peak_Rider_PID.mat','SpeedProfile_y','SpeedProfile_x','Rider_P','Rider_I', 'Rider_D');
 
 
