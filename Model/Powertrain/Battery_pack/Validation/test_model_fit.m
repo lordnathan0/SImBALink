@@ -16,7 +16,7 @@ load( truth );
 %Idc = timeseries( Current, Time );
 %V	= timeseries( Voltage, Time );
 
-load_system('Battery_pack');
+load_system('../Battery_pack');
 mws = get_param(bdroot, 'modelworkspace');
 
 % Is this where we want to keep the cell MATfile ?
